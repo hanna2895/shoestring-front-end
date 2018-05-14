@@ -33,15 +33,38 @@ class App extends Component {
     }
   }
 
-  register = async () => {
+  register = async (name, username, password, photo) => {
     console.log('you are trying to register')
+    const userRegister = await fetch('http://localhost:9292/user/register', {
+      method: 'POST',
+      credentials: 'include',
+      body: JSON.stringify({
+        name: name,
+        username: username,
+        password: password,
+        photo: photo
+      })
+    })
+    const registrationResponse = await userRegister.json();
+    console.log(registrationResponse.success)
+    if(registrationResponse.success){
+      this.setState({
+        loggedIn: true
+      })
+    } else {
+      this.setState({
+        loginError: registrationResponse.message
+      })
+    }
+
   }
   render() {
+    console.log(this.state, 'THIS IS sssssssstate')
     return (
       <div className="App">
         <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>
       </div>
-    );
+    )
   }
 }
 

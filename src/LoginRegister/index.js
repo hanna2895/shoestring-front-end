@@ -45,6 +45,7 @@ class LoginRegister extends Component{
 					<input className={this.state.registering ? null : 'hide'} type='text' name='photo' placeholder='photo' value={this.state.photo} onChange={this.handleInput}/>
 					<button type='submit'>Submit</button>
 				</form>
+				{this.props.loginError != '' ? <p>{this.props.loginError}</p> : null}
 			</div>
 		)
 	}

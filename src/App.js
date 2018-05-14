@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import UserSidecard from './UserSidecard'
-
+import UserSidcard from './UserSidecard'
+import AllTripsContainer from './AllTripsContainer';
 
 
 class App extends Component {
@@ -10,7 +10,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hello!</h1>
-        <UserSidecard />
+        <UserSideCard/>
+
+        <AllTripsContainer />
+
       </div>
     );
   }

@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-<<<<<<< HEAD
-import UserSidecard from './UserSidecard'
-=======
 import LoginRegister from './LoginRegister'
-import UserSidebar from './UserSidebar'
->>>>>>> 9386667e35275ca0ff1434fda3541d965bf12e04
+import UserSidecard from './UserSidecard'
 import AllTripsContainer from './AllTripsContainer';
 
 class App extends Component {
@@ -64,11 +60,9 @@ class App extends Component {
 
   }
   render() {
-<<<<<<< HEAD
 
-=======
     console.log(this.state, 'THIS IS sssssssstate')
->>>>>>> 9386667e35275ca0ff1434fda3541d965bf12e04
+
     return (
       <div className="App">
         <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>

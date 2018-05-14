@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import LoginRegister from './LoginRegister'
-import UserSidecard from './UserSidecard'
+import UserSidebar from './UserSidebar'
 import AllTripsContainer from './AllTripsContainer';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      loggedIn: false,
-      loginError: ''
+      loggedIn: true,
+      loginError: '',
+      user: ''
     }
   }
 
@@ -65,13 +66,7 @@ class App extends Component {
 
     return (
       <div className="App">
-<<<<<<< HEAD
-        <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>
-        <h1>Hello!</h1>
-        <UserSidecard />
-        <AllTripsContainer />
-=======
-        {this.state.loggedIn ? 
+        {this.state.loggedIn ?
           <div>
             <h1>Hello!</h1>
             <UserSidebar />
@@ -79,7 +74,6 @@ class App extends Component {
           </div>
           : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>
         }
->>>>>>> 6ac040d63426a451e25e10e746eca613b17693b1
       </div>
     )
   }

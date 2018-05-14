@@ -3,6 +3,7 @@ import './App.css';
 import LoginRegister from './LoginRegister'
 import UserSidebar from './UserSidebar'
 import AllTripsContainer from './AllTripsContainer';
+import UserEditModel from './UserEditModel'
 
 class App extends Component {
   constructor(){

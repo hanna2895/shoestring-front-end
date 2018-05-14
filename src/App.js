@@ -65,10 +65,21 @@ class App extends Component {
 
     return (
       <div className="App">
+<<<<<<< HEAD
         <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>
         <h1>Hello!</h1>
         <UserSidecard />
         <AllTripsContainer />
+=======
+        {this.state.loggedIn ? 
+          <div>
+            <h1>Hello!</h1>
+            <UserSidebar />
+            <AllTripsContainer />
+          </div>
+          : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>
+        }
+>>>>>>> 6ac040d63426a451e25e10e746eca613b17693b1
       </div>
     )
   }

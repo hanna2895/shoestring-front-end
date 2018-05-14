@@ -40,6 +40,7 @@ class AllTripsContainer extends Component {
 		console.log(trips, 'this is trips');
 		const tripList = trips.map((trip, i) => {
 			return(
+				<Row>
 				<Card body key={trip.id} className="trip">
 					<div>
 					<CardTitle>{trip.title}</CardTitle> <br/>
@@ -51,14 +52,15 @@ class AllTripsContainer extends Component {
 						<p>Data viz will go here</p>
 					</div>
 				</Card>
+				</Row>
 			)
 		})
 		return(
-			<div>
+			<div className="trip-cards">
 				<h1>My Trips </h1>
-				<Row>
+				
 				{tripList}
-				</Row>
+				
 			</div>
 
 		)

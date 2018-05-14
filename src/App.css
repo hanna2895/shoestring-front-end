@@ -1,5 +1,5 @@
 .App {
-  background-color: purple;
+  background-color: #96C4FEFF;
   text-align: center;
 }
 
@@ -26,4 +26,8 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.container {
+  display: flex;
 }

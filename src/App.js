@@ -66,8 +66,10 @@ class App extends Component {
         {this.state.loggedIn ? 
           <div>
             <h1>Hello!</h1>
-            <UserSidebar />
-            <AllTripsContainer />
+            <div className="container">
+              <UserSidebar />
+              <AllTripsContainer />
+            </div>
           </div>
           : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>
         }

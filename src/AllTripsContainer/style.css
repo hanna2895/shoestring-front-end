@@ -3,3 +3,12 @@
 	display: flex;
 	flex-direction: row;
 }
+
+.card {
+	width: 65vw;
+}
+
+.trip-cards {
+	margin-left: auto;
+  	margin-right: auto
+}

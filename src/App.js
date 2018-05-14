@@ -63,11 +63,14 @@ class App extends Component {
     console.log(this.state, 'THIS IS sssssssstate')
     return (
       <div className="App">
-        <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>
-        <h1>Hello!</h1>
-        <UserSidebar />
-        
-        <AllTripsContainer />
+        {this.state.loggedIn ? 
+          <div>
+            <h1>Hello!</h1>
+            <UserSidebar />
+            <AllTripsContainer />
+          </div>
+          : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>
+        }
       </div>
     )
   }

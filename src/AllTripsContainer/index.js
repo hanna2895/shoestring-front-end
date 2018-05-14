@@ -13,9 +13,9 @@ class AllTripsContainer extends Component {
 	componentDidMount() {
 		this.getTripsByUser()
 			.then((trips) => {
-				console.log(trips);
+				console.log(trips, "this is trips in componentDidMount");
 				this.setState({trips: trips.trip})
-				console.log(this.state);
+				console.log(this.state, "this is state");
 			})
 			.catch((err) => {
 				console.log(err);
@@ -23,11 +23,13 @@ class AllTripsContainer extends Component {
 	}
 
 	getTripsByUser = async () => {
+		console.log('get trips by user is being called')
 
 		const tripsJson = await fetch('http://localhost:9292/trips', {
-			// credentials: 'include' <-- need to put this back in once login function is added
+			credentials: 'include'
 		});
 		const trips = await tripsJson.json();
+		console.log(trips, 'trips from getTripsByUser')
 		return trips;
 	}
 
@@ -35,12 +37,12 @@ class AllTripsContainer extends Component {
 	render() {
 		const trips = this.state.trips
 		console.log(trips, 'this is trips');
-		const tripList = trips.map((trips, i) => {
+		const tripList = trips.map((trip, i) => {
 			return(
-				<div key={trips.id} className="trip">
-					{trips.title} <br/>
-					Trip Budget: {trips.budget} <br/>
-					Amount Saved: {trips.saved} <br />
+				<div key={trip.id} className="trip">
+					{trip.title} <br/>
+					Trip Budget: {trip.budget} <br/>
+					Amount Saved: {trip.saved} <br />
 				</div>
 			)
 		})

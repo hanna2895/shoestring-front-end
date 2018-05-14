@@ -15,7 +15,7 @@ class AllTripsContainer extends Component {
 			.then((trips) => {
 				console.log(trips, "this is trips in componentDidMount");
 				this.setState({trips: trips.trip})
-				console.log(this.state, "this is state");
+				// console.log(this.state, "this is state");
 			})
 			.catch((err) => {
 				console.log(err);
@@ -23,20 +23,20 @@ class AllTripsContainer extends Component {
 	}
 
 	getTripsByUser = async () => {
-		console.log('get trips by user is being called')
+		// console.log('get trips by user is being called')
 
 		const tripsJson = await fetch('http://localhost:9292/trips', {
 			credentials: 'include'
 		});
 		const trips = await tripsJson.json();
-		console.log(trips, 'trips from getTripsByUser')
+		// console.log(trips, 'trips from getTripsByUser')
 		return trips;
 	}
 
 
 	render() {
 		const trips = this.state.trips
-		console.log(trips, 'this is trips');
+		// console.log(trips, 'this is trips');
 		const tripList = trips.map((trip, i) => {
 			return(
 				<div key={trip.id} className="trip">
@@ -53,7 +53,7 @@ class AllTripsContainer extends Component {
 			</div>
 
 		)
-		
+
 	}
 
 }

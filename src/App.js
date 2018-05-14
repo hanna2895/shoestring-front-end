@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import UserSidcard from './UserSidecard'
+import UserSidecard from './UserSidecard'
 import AllTripsContainer from './AllTripsContainer';
 
 
@@ -10,8 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hello!</h1>
-        <UserSideCard/>
-
+        <UserSidecard />
         <AllTripsContainer />
 
       </div>

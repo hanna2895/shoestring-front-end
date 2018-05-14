@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import "./style.css"
 
 class AllTripsContainer extends Component {
@@ -39,17 +40,25 @@ class AllTripsContainer extends Component {
 		console.log(trips, 'this is trips');
 		const tripList = trips.map((trip, i) => {
 			return(
-				<div key={trip.id} className="trip">
-					{trip.title} <br/>
-					Trip Budget: {trip.budget} <br/>
-					Amount Saved: {trip.saved} <br />
-				</div>
+				<Card body key={trip.id} className="trip">
+					<div>
+					<CardTitle>{trip.title}</CardTitle> <br/>
+					<CardText>Trip Budget: {trip.budget}</CardText> <br/>
+					<CardText>Amount Saved: {trip.saved} </CardText><br />
+					<Button>More Details</Button>
+					</div>
+					<div>
+						<p>Data viz will go here</p>
+					</div>
+				</Card>
 			)
 		})
 		return(
 			<div>
 				<h1>My Trips </h1>
+				<Row>
 				{tripList}
+				</Row>
 			</div>
 
 		)

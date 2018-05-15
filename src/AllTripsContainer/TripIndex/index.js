@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { Card, Button, CardTitle, CardText, Row } from 'reactstrap';
 import "../style.css";
 
 const TripIndex = (props) => {

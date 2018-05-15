@@ -28,6 +28,18 @@ const UserSidebar = (props) => {
           </Row>
         </Container>
 
+<<<<<<< HEAD
+=======
+        <Card id="userCard">
+          <CardImg top width="100%" src={props.photo} alt="photo" />
+          <CardBody>
+            <CardTitle>{props.name}</CardTitle>
+            <CardSubtitle>{props.username}</CardSubtitle>
+            {/* <CardText>Etc.Etc.</CardText> */}
+            <Button onClick={props.openModal}>Edit User</Button>
+          </CardBody>
+        </Card>
+>>>>>>> cdf3c426a7dd163d8b9455bc5ea258920a6bbbdd
       </div>
 
     );

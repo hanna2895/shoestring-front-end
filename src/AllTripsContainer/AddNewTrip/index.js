@@ -33,7 +33,6 @@ class AddNewTrip extends Component {
 	}
 
 	render() {
-		console.log(this.props, ' this porpos in AddNewTrip')
 		return (
 			<div>
 				<h1> Add New Trip </h1>

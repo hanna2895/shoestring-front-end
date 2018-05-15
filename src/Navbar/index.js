@@ -27,7 +27,7 @@ class Navbar extends Component {
 
               <div className="col">
                 <NavItem>
-                  <Button href="#" onClick="THIS WILL BE LOGOUT FUNCTION">Logout</Button>
+                  <Button onClick={this.props.logout}>Logout</Button>
                 </NavItem>
               </div>
 

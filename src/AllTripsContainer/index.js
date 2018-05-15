@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import "./style.css"
+import TripIndex from './TripIndex'
 
 class AllTripsContainer extends Component {
 	constructor() {
 		super();
 		this.state ={
-			trips: []
+			trips: [],
+			showTripList: true,
+			showNewTrip: false
 		}
 	}
 
@@ -35,21 +39,11 @@ class AllTripsContainer extends Component {
 
 
 	render() {
-		const trips = this.state.trips
-		// console.log(trips, 'this is trips');
-		const tripList = trips.map((trip, i) => {
-			return(
-				<div key={trip.id} className="trip">
-					{trip.title} <br/>
-					Trip Budget: {trip.budget} <br/>
-					Amount Saved: {trip.saved} <br />
-				</div>
-			)
-		})
+	
 		return(
 			<div>
-				<h1>My Trips </h1>
-				{tripList}
+				<TripIndex trips={this.state.trips}/>
+				<button>Add a New Trip </button>
 			</div>
 
 		)

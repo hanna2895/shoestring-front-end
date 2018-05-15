@@ -4,6 +4,7 @@ import LoginRegister from './LoginRegister'
 import UserSidebar from './UserSidebar'
 import AllTripsContainer from './AllTripsContainer';
 import Navbar from './Navbar'
+import UserEditModal from './UserEditModal'
 
 class App extends Component {
   constructor(){
@@ -11,12 +12,18 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       loginError: '',
+      user_id: '',
       name: '',
       username: '',
-      photo: '',
       showNewTrip: false,
+<<<<<<< HEAD
       showTripsIndex: true
 
+=======
+      photo: '',
+      openModal: false,
+      userEditError: ''
+>>>>>>> f87162bfe4808b7e219d647d27eaab28ba0816d7
     }
   }
 
@@ -24,6 +31,7 @@ class App extends Component {
     this.showUserSidebar()
     .then((user) => {
       this.setState({
+        user_id: user.found_user.id,
         name: user.found_user.name,
         username: user.found_user.username,
         photo: user.found_user.photo
@@ -107,12 +115,50 @@ class App extends Component {
     return user;
   };
 
+  openModal = async (e) => {
+    const userToEdit = await fetch('http://localhost:9292/user', {
+      credentials: 'include'
+    });
+    const foundUser = await userToEdit.json()
+    this.setState({
+      openModal: true,
+      userToEdit: foundUser.found_user
+    })
+
+  }
+  editUser = async (name, username, password, photo, id) => {
+    console.log(id, 'dsajhsfjhbshjkbakshdjhkadsbhjdksakbjhkhbjdfashjkbfdaskbhjf')
+    const user = await fetch('http://localhost:9292/user/' + id, {
+      method: 'PUT',
+      credentials: 'include',
+      body: JSON.stringify({
+        name: name,
+        username: username,
+        password: password,
+        photo: photo
+      })
+    });
+    const response = await user.json()
+    console.log(response.user)
+    if(response.success){
+      this.setState({
+        name: name,
+        username: username,
+        photo: photo,
+        openModal: false
+      })
+    } else {
+      this.setState({
+        userEditError: response.message
+      })
+    }
+  }
+
   renderAddNewTripForm = () => {
     console.log('this function is being called on the button');
     this.setState({
       showNewTrip:true
     })
-    console.log(this.state);
   };
 
 
@@ -130,20 +176,21 @@ class App extends Component {
       <div className="App">
         {this.state.loggedIn ?
           <div>
-
             <h1>Shoestring!</h1>
-
             <div>
               <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} logout={this.logout}/>
             </div>
-
             <div className="container">
+<<<<<<< HEAD
 
               <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo}/>
               <AllTripsContainer showNewTrip={this.state.showNewTrip} showTripsIndex={this.state.showTripsIndex}/>
+=======
+              <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo} openModal={this.openModal}/>
+              <UserEditModal modalState={this.state.openModal} user_id={this.state.user_id} user_name={this.state.name} username={this.state.username} photo={this.state.photo} editUser={this.editUser} userEditError={this.state.userEditError}/>
+              <AllTripsContainer showNewTrip={this.state.showNewTrip}/>
+>>>>>>> f87162bfe4808b7e219d647d27eaab28ba0816d7
             </div>
-
-
           </div>
           : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>
         }

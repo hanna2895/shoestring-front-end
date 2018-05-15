@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbar from '../Navbar'
 import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import "./style.css"
 import TripIndex from './TripIndex'
@@ -9,7 +10,7 @@ class AllTripsContainer extends Component {
 		super();
 		this.state ={
 			trips: [],
-			showNewTrip: false
+			// showNewTrip: false
 		}
 	}
 
@@ -37,24 +38,17 @@ class AllTripsContainer extends Component {
 		return trips;
 	}
 
-	renderAddNewTripForm = () => {
-		console.log('this function is being called on the button');
-		this.setState({
-			showNewTrip:true
-		})
-		console.log(this.state);
-	}
 
 
 	render() {
 		console.log(this.state, 'this is state');
-	
+
 		return(
 			<div>
-				{this.state.showNewTrip ? <AddNewTrip />: <TripIndex trips={this.state.trips} />}
-			
+				{this.props.showNewTrip ? <AddNewTrip />: <TripIndex trips={this.state.trips} />}
 
-				<button onClick={this.renderAddNewTripForm}>Add a New Trip </button>
+
+				{/* <button onClick={this.renderAddNewTripForm}>Add a New Trip </button> */}
 			</div>
 
 		)

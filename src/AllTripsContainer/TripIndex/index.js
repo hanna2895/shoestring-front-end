@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import "../style.css";
 
@@ -28,7 +29,7 @@ const TripIndex = (props) => {
 			{tripList}
 		</div>
 	)
-	
+
 }
 
 export default TripIndex;

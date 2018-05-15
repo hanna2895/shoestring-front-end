@@ -13,7 +13,8 @@ class App extends Component {
       loginError: '',
       name: '',
       username: '',
-      photo: ''
+      photo: '',
+      showNewTrip: false
     }
   }
 
@@ -89,6 +90,15 @@ class App extends Component {
 
   }
 
+  renderAddNewTripForm = () => {
+    console.log('this function is being called on the button');
+    this.setState({
+      showNewTrip:true
+    })
+    console.log(this.state);
+  };
+
+
   render() {
 
     return (
@@ -99,13 +109,13 @@ class App extends Component {
             <h1>Shoestring!</h1>
 
             <div>
-              <Navbar />
+              <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip}/>
             </div>
 
             <div className="container">
 
               <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo}/>
-              <AllTripsContainer />
+              <AllTripsContainer showNewTrip={this.state.showNewTrip}/>
             </div>
 
 

@@ -34,7 +34,6 @@ class AllTripsContainer extends Component {
 	}
 
 	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers) => {
-		// e.preventDefault();
 
 		const flight = await fetch('http://localhost:9292/flights', {
 			method: "POST",

@@ -35,18 +35,6 @@ class AllTripsContainer extends Component {
 
 	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers) => {
 		// e.preventDefault();
-		const trips = await fetch('http://localhost:9292/trips', {
-			method: "POST",
-			credentials: 'include',
-			body: JSON.stringify({
-				title: title,
-				budget: budget,
-				amountSaved: amountSaved
-			})
-		});
-
-		const tripParsed = await trips.json();
-		console.log(tripParsed, 'this is trip parsed');
 
 		const flight = await fetch('http://localhost:9292/flights', {
 			method: "POST",
@@ -62,6 +50,22 @@ class AllTripsContainer extends Component {
 
 		const flightParsed = await flight.json();
 		console.log(flightParsed, 'this is flight parsed');
+
+		console.log(flightParsed.added_flight.id);
+
+		const trips = await fetch('http://localhost:9292/trips', {
+			method: "POST",
+			credentials: 'include',
+			body: JSON.stringify({
+				title: title,
+				budget: budget,
+				amountSaved: amountSaved,
+				flight_id: flightParsed.added_flight.id
+			})
+		});
+
+		const tripParsed = await trips.json();
+		console.log(tripParsed, 'this is trip parsed');
 		
 		return (tripParsed, flightParsed);
 	}

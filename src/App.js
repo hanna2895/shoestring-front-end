@@ -12,7 +12,8 @@ class App extends Component {
       loggedIn: false,
       loginError: '',
       name: '',
-      username: ''
+      username: '',
+      openModal: false
     }
   }
 
@@ -93,6 +94,9 @@ class App extends Component {
     return user;
 
   }
+  openModal = (e) => {
+    console.log('This is openModal button')
+  }
 
   render() {
 
@@ -103,7 +107,7 @@ class App extends Component {
         {this.state.loggedIn ?
           <div>
             <h1>Hello!</h1>
-            <UserSidebar username={this.state.username} name={this.state.name}/>
+            <UserSidebar username={this.state.username} name={this.state.name} openModal={this.openModal}/>
             <AllTripsContainer />
           </div>
           : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>

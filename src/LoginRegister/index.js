@@ -22,6 +22,7 @@ class LoginRegister extends Component{
 			registering: false
 		})
 	}
+
 	handleInput = (e) => {
 		const field = e.currentTarget.name
 		if(field == 'name') this.setState({ name: e.currentTarget.value })
@@ -29,6 +30,7 @@ class LoginRegister extends Component{
 		else if (field == 'password') this.setState({ password: e.currentTarget.value })
 		else this.setState({ photo: e.currentTarget.value })
 	}
+	
 	handleSubmit = (e) => {
 		e.preventDefault();
 		if(this.state.registering) this.props.register(this.state.name, this.state.username, this.state.password, this.state.photo)

@@ -4,6 +4,7 @@ import LoginRegister from './LoginRegister'
 import UserSidebar from './UserSidebar'
 import AllTripsContainer from './AllTripsContainer';
 import UserEditModel from './UserEditModel'
+import Navbar from './Navbar'
 
 class App extends Component {
   constructor(){
@@ -13,11 +14,9 @@ class App extends Component {
       loginError: '',
       name: '',
       username: '',
-<<<<<<< HEAD
-      openModal: false
-=======
-      photo: ''
->>>>>>> d4197ba961ee44e087e1e9ba19efc0b3b2676ba3
+      openModal: false,
+      photo: '',
+      showNewTrip: false,
     }
   }
 
@@ -77,7 +76,23 @@ class App extends Component {
         loginError: registrationResponse.message
       })
     }
+  }
 
+  logout = async (username, password) => {
+    const userLogout = await fetch('http://localhost:9292/user/logout', {
+        // method: 'GET'
+    });
+    console.log(userLogout, "logout button being clicked");
+    const logoutResponse = await userLogout.json();
+    if(logoutResponse.success){
+      this.setState({
+        loggedIn: false
+      })
+    } else {
+      this.setState({
+        loggedIn: true
+      })
+    }
   }
 
   showUserSidebar = async () => {
@@ -90,22 +105,32 @@ class App extends Component {
     const user = await userJson.json();
 
     return user;
+  };
 
-  }
   openModal = (e) => {
     console.log('This is openModal button')
   }
 
-  render() {
+  renderAddNewTripForm = () => {
+    console.log('this function is being called on the button');
+    this.setState({
+      showNewTrip:true
+    })
+  };
 
+
+  render(){
     return (
       <div className="App">
         {this.state.loggedIn ?
           <div>
-            <h1>Hello!</h1>
-            <div className="container">      
+            <h1>Shoestring!</h1>
+            <div>
+              <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} logout={this.logout}/>
+            </div>
+            <div className="container">
               <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo}/>
-              <AllTripsContainer />
+              <AllTripsContainer showNewTrip={this.state.showNewTrip}/>
             </div>
           </div>
           : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>

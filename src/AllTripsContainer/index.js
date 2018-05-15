@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import "./style.css"
 import TripIndex from './TripIndex'
+import AddNewTrip from './AddNewTrip'
 
 class AllTripsContainer extends Component {
 	constructor() {
 		super();
 		this.state ={
 			trips: [],
-			showTripList: true,
 			showNewTrip: false
 		}
 	}
@@ -37,13 +37,24 @@ class AllTripsContainer extends Component {
 		return trips;
 	}
 
+	renderAddNewTripForm = () => {
+		console.log('this function is being called on the button');
+		this.setState({
+			showNewTrip:true
+		})
+		console.log(this.state);
+	}
+
 
 	render() {
+		console.log(this.state, 'this is state');
 	
 		return(
 			<div>
-				<TripIndex trips={this.state.trips}/>
-				<button>Add a New Trip </button>
+				{this.state.showNewTrip ? <AddNewTrip />: <TripIndex trips={this.state.trips} />}
+			
+
+				<button onClick={this.renderAddNewTripForm}>Add a New Trip </button>
 			</div>
 
 		)

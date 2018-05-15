@@ -49,6 +49,21 @@ class AllTripsContainer extends Component {
 		return tripParsed;
 	}
 
+	// getFlight = async (e) => {
+	// 	// e.preventDefault();
+	// 	console.log('get flight is being called');
+	// 	const flightJson = await fetch('localhost:9292/new_endpoint')
+	// 	fetch('http://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?origin=IST&destination=BOS&departure_date=2018-10-15&return_date=2018-10-21&number_of_results=3&apikey=CsAYiUDotu5fFRg8Gl7WFv4AFCqSxRhQ')
+	// 	console.log(flightJson, 'this is flight json');
+	// 	const flight = await flightJson.json();
+	// 	console.log(flight);
+
+
+
+	// }
+
+
+
 	render() {
 		console.log(this.state, 'this is state');
 

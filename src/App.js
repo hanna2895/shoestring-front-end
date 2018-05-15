@@ -3,6 +3,7 @@ import './App.css';
 import LoginRegister from './LoginRegister'
 import UserSidebar from './UserSidebar'
 import AllTripsContainer from './AllTripsContainer';
+import Navbar from './Navbar'
 
 class App extends Component {
   constructor(){
@@ -94,16 +95,20 @@ class App extends Component {
       <div className="App">
         {this.state.loggedIn ?
           <div>
-            <h1>Hello!</h1>
 
+            <h1>Shoestring!</h1>
+
+            <div>
+              <Navbar />
+            </div>
 
             <div className="container">
-              
+
               <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo}/>
               <AllTripsContainer />
             </div>
 
-           
+
           </div>
           : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>
         }

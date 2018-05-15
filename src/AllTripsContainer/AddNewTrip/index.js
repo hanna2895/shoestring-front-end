@@ -27,11 +27,17 @@ class AddNewTrip extends Component {
 
 	}
 
+	handleSubmit = (e) => {
+		e.preventDefault();
+		this.props.createTrip(this.state.title, this.state.origin, this.state.destination, this.state.budget, this.state.amountSaved, this.state.departureDate, this.state.returnDate, this.state.numOfPassengers)
+	}
+
 	render() {
+		console.log(this.props, ' this porpos in AddNewTrip')
 		return (
 			<div>
 				<h1> Add New Trip </h1>
-				<form onSubmit={this.props.createTrip.bind(null, this.state.title, this.state.budget, this.state.amountSaved)}>
+				<form>
 					<label> Trip Title </label>
 					<input type="text" name="title" value={this.state.title} onChange={this.handleInput} /> <br />
 					<label> Origin </label>
@@ -48,7 +54,7 @@ class AddNewTrip extends Component {
 					<input type="text" name="returnDate" value={this.state.returnDate} onChange={this.handleInput} /><br />
 					<label>Number of Passengers</label>
 					<input type="text" name="numOfPassengers" value={this.state.numOfPassengers} onChange={this.handleInput} /><br />
-					<button>Add Trip </button>
+					<button type="submit" onClick={this.handleSubmit}>Add Trip </button>
 				</form>
 			</div>
 

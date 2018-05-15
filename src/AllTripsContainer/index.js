@@ -33,8 +33,8 @@ class AllTripsContainer extends Component {
 		return trips;
 	}
 
-	createTrip = async (title, budget, amountSaved, e) => {
-		e.preventDefault();
+	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers) => {
+		// e.preventDefault();
 		const trips = await fetch('http://localhost:9292/trips', {
 			method: "POST",
 			credentials: 'include',
@@ -44,10 +44,28 @@ class AllTripsContainer extends Component {
 				amountSaved: amountSaved
 			})
 		});
+
 		const tripParsed = await trips.json();
 		console.log(tripParsed, 'this is trip parsed');
-		return tripParsed;
+
+		const flight = await fetch('http://localhost:9292/flights', {
+			method: "POST",
+			credentials: 'include',
+			body: JSON.stringify({
+				origin: origin,
+				destination: destination,
+				departureDate: departureDate,
+				returnDate: returnDate,
+				numOfPassengers: numOfPassengers
+			})
+		})
+
+		const flightParsed = await flight.json();
+		console.log(flightParsed, 'this is flight parsed');
+		
+		return (tripParsed, flightParsed);
 	}
+
 
 	// getFlight = async (e) => {
 	// 	// e.preventDefault();

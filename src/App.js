@@ -13,19 +13,22 @@ class App extends Component {
       loginError: '',
       name: '',
       username: '',
+<<<<<<< HEAD
       openModal: false
+=======
+      photo: ''
+>>>>>>> d4197ba961ee44e087e1e9ba19efc0b3b2676ba3
     }
   }
 
   componentDidMount() {
     this.showUserSidebar()
     .then((user) => {
-      console.log(user, "this is user in componentDidMount");
       this.setState({
         name: user.found_user.name,
-        username: user.found_user.username
+        username: user.found_user.username,
+        photo: user.found_user.photo
       })
-      console.log(this.state, "this is state!");
     })
     .catch((err) => {
       console.log(err);
@@ -54,7 +57,6 @@ class App extends Component {
   }
 
   register = async (name, username, password, photo) => {
-    console.log('you are trying to register')
     const userRegister = await fetch('http://localhost:9292/user/register', {
       method: 'POST',
       credentials: 'include',
@@ -66,7 +68,6 @@ class App extends Component {
       })
     })
     const registrationResponse = await userRegister.json();
-    console.log(registrationResponse.success)
     if(registrationResponse.success){
       this.setState({
         loggedIn: true
@@ -87,10 +88,7 @@ class App extends Component {
     });
 
     const user = await userJson.json();
-    console.log(user, "user from showUserSidebar");
 
-    // this.setState({user: user})
-    // console.log(this.state);
     return user;
 
   }
@@ -100,15 +98,15 @@ class App extends Component {
 
   render() {
 
-    console.log(this.state, 'THIS IS sssssssstate')
-
     return (
       <div className="App">
         {this.state.loggedIn ?
           <div>
             <h1>Hello!</h1>
-            <UserSidebar username={this.state.username} name={this.state.name} openModal={this.openModal}/>
-            <AllTripsContainer />
+            <div className="container">      
+              <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo}/>
+              <AllTripsContainer />
+            </div>
           </div>
           : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>
         }

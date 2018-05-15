@@ -15,6 +15,8 @@ class App extends Component {
       username: '',
       photo: '',
       showNewTrip: false,
+      showTripsIndex: true
+
     }
   }
 
@@ -114,6 +116,15 @@ class App extends Component {
   };
 
 
+  renderTripsIndex = () => {
+    console.log('this function is being called on the button');
+    this.setState({
+      showTripsIndex:true
+    })
+    console.log(this.state);
+  };
+
+
   render(){
     return (
       <div className="App">
@@ -129,7 +140,7 @@ class App extends Component {
             <div className="container">
 
               <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo}/>
-              <AllTripsContainer showNewTrip={this.state.showNewTrip}/>
+              <AllTripsContainer showNewTrip={this.state.showNewTrip} showTripsIndex={this.state.showTripsIndex}/>
             </div>
 
 

@@ -29,7 +29,6 @@ class AllTripsContainer extends Component {
 
 	getTripsByUser = async () => {
 		// console.log('get trips by user is being called')
-
 		const tripsJson = await fetch('http://localhost:9292/trips', {
 			credentials: 'include'
 		});
@@ -42,13 +41,10 @@ class AllTripsContainer extends Component {
 
 	render() {
 		console.log(this.state, 'this is state');
-
 		return(
 			<div>
 				{this.props.showNewTrip ? <AddNewTrip />: <TripIndex trips={this.state.trips} />}
 
-
-				{/* <button onClick={this.renderAddNewTripForm}>Add a New Trip </button> */}
 			</div>
 
 		)

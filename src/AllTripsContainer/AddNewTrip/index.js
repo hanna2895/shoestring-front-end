@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import AllTripsContainer from '../../AllTripsContainer'
+import {Button} from 'reactstrap';
 import '../style.css';
 
 class AddNewTrip extends Component {
@@ -10,7 +12,7 @@ class AddNewTrip extends Component {
 			destination: "",
 			budget: "",
 			amountSaved: "",
-			departureDate: "", 
+			departureDate: "",
 			returnDate: "",
 			numOfPassengers: ""
 		}
@@ -20,7 +22,7 @@ class AddNewTrip extends Component {
 		const target = e.target;
 		const value = target.value;
 		const name = target.name;
-		
+
 
 		this.setState({
 			[name]: value
@@ -32,15 +34,22 @@ class AddNewTrip extends Component {
 		e.preventDefault();
 	}
 
+	navigateToIndex = (e) => {
+		console.log("button is clikkked");
+		this.setState({
+			
+		})
+	}
 
 	render() {
 		return (
 			<div>
-				<h1> Add New Trip </h1>
+				<h2> Add New Trip </h2>
 				<form>
 					<input type="text" name="title" value={this.state.title} onChange={this.handleInput} />
-					<button onClick={this.handleSubmit}>Add Trip </button>
+					<Button onClick={this.handleSubmit}>Add Trip </Button><br /><br />
 				</form>
+				<Button onClick={this.navigateToIndex}> Back to Trips </Button>
 			</div>
 
 		)

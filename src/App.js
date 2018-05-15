@@ -16,14 +16,9 @@ class App extends Component {
       name: '',
       username: '',
       showNewTrip: false,
-<<<<<<< HEAD
-      showTripsIndex: true
-
-=======
       photo: '',
       openModal: false,
       userEditError: ''
->>>>>>> f87162bfe4808b7e219d647d27eaab28ba0816d7
     }
   }
 
@@ -181,15 +176,9 @@ class App extends Component {
               <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} logout={this.logout}/>
             </div>
             <div className="container">
-<<<<<<< HEAD
-
-              <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo}/>
-              <AllTripsContainer showNewTrip={this.state.showNewTrip} showTripsIndex={this.state.showTripsIndex}/>
-=======
               <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo} openModal={this.openModal}/>
               <UserEditModal modalState={this.state.openModal} user_id={this.state.user_id} user_name={this.state.name} username={this.state.username} photo={this.state.photo} editUser={this.editUser} userEditError={this.state.userEditError}/>
               <AllTripsContainer showNewTrip={this.state.showNewTrip}/>
->>>>>>> f87162bfe4808b7e219d647d27eaab28ba0816d7
             </div>
           </div>
           : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>

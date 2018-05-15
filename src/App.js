@@ -22,21 +22,6 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    this.showUserSidebar()
-    .then((user) => {
-      this.setState({
-        user_id: user.found_user.id,
-        name: user.found_user.name,
-        username: user.found_user.username,
-        photo: user.found_user.photo
-      })
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-  }
-
   login = async (username, password) => {
     const userLogin = await fetch('http://localhost:9292/user/login', {
       method: 'POST',
@@ -50,6 +35,18 @@ class App extends Component {
     if(loginResponse.success){
       this.setState({
         loggedIn: true
+      })
+      this.showUserSidebar()
+      .then((user) => {
+        this.setState({
+          user_id: user.found_user.id,
+          name: user.found_user.name,
+          username: user.found_user.username,
+          photo: user.found_user.photo
+        })
+      })
+      .catch((err) => {
+        console.log(err);
       })
     } else {
       this.setState({
@@ -73,6 +70,21 @@ class App extends Component {
     if(registrationResponse.success){
       this.setState({
         loggedIn: true
+      })
+      this.setState({
+        loggedIn: true
+      })
+      this.showUserSidebar()
+      .then((user) => {
+        this.setState({
+          user_id: user.found_user.id,
+          name: user.found_user.name,
+          username: user.found_user.username,
+          photo: user.found_user.photo
+        })
+      })
+      .catch((err) => {
+        console.log(err);
       })
     } else {
       this.setState({
@@ -172,7 +184,7 @@ class App extends Component {
               <AllTripsContainer showNewTrip={this.state.showNewTrip}/>
             </div>
           </div>
-          : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>
+          : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError} logout={this.logout}/>
         }
       </div>
     )

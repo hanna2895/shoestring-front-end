@@ -18,7 +18,6 @@ const UserSidebar = (props) => {
             <CardSubtitle>{props.username}</CardSubtitle>
             {/* <CardText>Etc.Etc.</CardText> */}
             <Button onClick={props.openModal}>Edit User</Button>
-            <button >Logout</button>
           </CardBody>
         </Card>
       </div>

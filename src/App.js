@@ -14,7 +14,7 @@ class App extends Component {
       name: '',
       username: '',
       photo: '',
-      showNewTrip: false
+      showNewTrip: false,
     }
   }
 
@@ -74,7 +74,23 @@ class App extends Component {
         loginError: registrationResponse.message
       })
     }
+  }
 
+  logout = async (username, password) => {
+    const userLogout = await fetch('http://localhost:9292/user/logout', {
+        // method: 'GET'
+    });
+    console.log(userLogout, "logout button being clicked");
+    const logoutResponse = await userLogout.json();
+    if(logoutResponse.success){
+      this.setState({
+        loggedIn: false
+      })
+    } else {
+      this.setState({
+        loggedIn: true
+      })
+    }
   }
 
   showUserSidebar = async () => {
@@ -87,8 +103,7 @@ class App extends Component {
     const user = await userJson.json();
 
     return user;
-
-  }
+  };
 
   renderAddNewTripForm = () => {
     console.log('this function is being called on the button');
@@ -99,8 +114,7 @@ class App extends Component {
   };
 
 
-  render() {
-
+  render(){
     return (
       <div className="App">
         {this.state.loggedIn ?
@@ -109,7 +123,7 @@ class App extends Component {
             <h1>Shoestring!</h1>
 
             <div>
-              <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip}/>
+              <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} logout={this.logout}/>
             </div>
 
             <div className="container">

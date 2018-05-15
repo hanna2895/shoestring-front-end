@@ -8,7 +8,7 @@ class AllTripsContainer extends Component {
 		super();
 		this.state ={
 			trips: [],
-			addedTrip: {}
+			addedTrip: ""
 			// showNewTrip: false
 		}
 	}
@@ -33,14 +33,28 @@ class AllTripsContainer extends Component {
 		return trips;
 	}
 
-
+	createTrip = async (title, budget, amountSaved, e) => {
+		e.preventDefault();
+		const trips = await fetch('http://localhost:9292/trips', {
+			method: "POST",
+			credentials: 'include',
+			body: JSON.stringify({
+				title: title,
+				budget: budget,
+				amountSaved: amountSaved
+			})
+		});
+		const tripParsed = await trips.json();
+		console.log(tripParsed, 'this is trip parsed');
+		return tripParsed;
+	}
 
 	render() {
 		console.log(this.state, 'this is state');
 
 		return(
 			<div>
-				{this.props.showNewTrip ? <AddNewTrip />: <TripIndex trips={this.state.trips} addedTrip={this.state.addedTrip}/>}
+				{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips}/>}
 
 			</div>
 

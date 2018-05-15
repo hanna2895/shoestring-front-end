@@ -11,7 +11,8 @@ class App extends Component {
       loggedIn: false,
       loginError: '',
       name: '',
-      username: ''
+      username: '',
+      photo: ''
     }
   }
 
@@ -21,7 +22,8 @@ class App extends Component {
       console.log(user, "this is user in componentDidMount");
       this.setState({
         name: user.found_user.name,
-        username: user.found_user.username
+        username: user.found_user.username,
+        photo: user.found_user.photo
       })
       console.log(this.state, "this is state!");
     })
@@ -87,22 +89,18 @@ class App extends Component {
     const user = await userJson.json();
     console.log(user, "user from showUserSidebar");
 
-    // this.setState({user: user})
-    // console.log(this.state);
     return user;
 
   }
 
   render() {
 
-    console.log(this.state, 'THIS IS sssssssstate')
-
     return (
       <div className="App">
         {this.state.loggedIn ?
           <div>
             <h1>Hello!</h1>
-            <UserSidebar username={this.state.username} name={this.state.name}/>
+            <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo}/>
             <AllTripsContainer />
           </div>
           : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError}/>

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 import "./style.css"
+import TripIndex from './TripIndex'
 
 class AllTripsContainer extends Component {
 	constructor() {
 		super();
 		this.state ={
-			trips: []
+			trips: [],
+			showTripList: true,
+			showNewTrip: false
 		}
 	}
 
@@ -16,7 +19,7 @@ class AllTripsContainer extends Component {
 			.then((trips) => {
 				console.log(trips, "this is trips in componentDidMount");
 				this.setState({trips: trips.trip})
-				console.log(this.state, "this is state");
+				// console.log(this.state, "this is state");
 			})
 			.catch((err) => {
 				console.log(err);
@@ -24,47 +27,27 @@ class AllTripsContainer extends Component {
 	}
 
 	getTripsByUser = async () => {
-		console.log('get trips by user is being called')
+		// console.log('get trips by user is being called')
 
 		const tripsJson = await fetch('http://localhost:9292/trips', {
 			credentials: 'include'
 		});
 		const trips = await tripsJson.json();
-		console.log(trips, 'trips from getTripsByUser')
+		// console.log(trips, 'trips from getTripsByUser')
 		return trips;
 	}
 
 
 	render() {
-		const trips = this.state.trips
-		console.log(trips, 'this is trips');
-		const tripList = trips.map((trip, i) => {
-			return(
-				<Row>
-				<Card body key={trip.id} className="trip">
-					<div>
-					<CardTitle>{trip.title}</CardTitle> <br/>
-					<CardText>Trip Budget: {trip.budget}</CardText> <br/>
-					<CardText>Amount Saved: {trip.saved} </CardText><br />
-					<Button>More Details</Button>
-					</div>
-					<div>
-						<p>Data viz will go here</p>
-					</div>
-				</Card>
-				</Row>
-			)
-		})
+	
 		return(
-			<div className="trip-cards">
-				<h1>My Trips </h1>
-				
-				{tripList}
-				
+			<div>
+				<TripIndex trips={this.state.trips}/>
+				<button>Add a New Trip </button>
 			</div>
 
 		)
-		
+
 	}
 
 }

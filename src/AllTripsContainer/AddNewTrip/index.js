@@ -15,6 +15,7 @@ class AddNewTrip extends Component {
 			departureDate: "",
 			returnDate: "",
 			numOfPassengers: "",
+			location: "",
 			checkInDate: "",
 			checkOutDate: "",
 			numOfRooms: ""
@@ -34,7 +35,8 @@ class AddNewTrip extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.props.createTrip(this.state.title, this.state.origin, this.state.destination, this.state.budget, this.state.amountSaved, this.state.departureDate, this.state.returnDate, this.state.numOfPassengers)
+		this.props.createTrip(this.state.title, this.state.origin, this.state.destination, this.state.budget, this.state.amountSaved, this.state.departureDate, this.state.returnDate, this.state.numOfPassengers, this.state.location, this.state.checkInDate,
+		this.state.checkOutDate, this.state.numOfRooms)
 	}
 
 	navigateToIndex = (e) => {
@@ -73,6 +75,11 @@ class AddNewTrip extends Component {
 
 								<Label>Number of Passengers</Label>
 								<Input type="text" name="numOfPassengers" value={this.state.numOfPassengers} onChange={this.handleInput} /><br />
+
+
+								<Label>Hotel Location **Use Airport Code**</Label>
+								<Input type="text" name="location" value={this.state.location} onChange={this.handleInput} /><br />
+
 
 								<Label>Check In Date</Label>
 								<Input type="text" name="checkInDate" value={this.state.checkInDate} onChange={this.handleInput} /><br />

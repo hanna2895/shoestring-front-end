@@ -91,17 +91,16 @@ class AllTripsContainer extends Component {
 		// })
 		
 		return (tripParsed);
+
 	}
 
 
 
 	render() {
 		console.log(this.state, 'this is state');
-
 		return(
 			<div>
 				{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips}/>}
-
 			</div>
 
 		)

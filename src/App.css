@@ -6,9 +6,6 @@
 
 .container {
   display: flex;
-<<<<<<< HEAD
   justify-content: space-around;
-=======
-  /*overflow: scroll;*/
->>>>>>> cdf3c426a7dd163d8b9455bc5ea258920a6bbbdd
+
 }

@@ -25,11 +25,6 @@ class AllTripsContainer extends Component {
 	}
 
 	getTripsByUser = async () => {
-<<<<<<< HEAD
-		// console.log('get trips by user is being called')
-=======
-
->>>>>>> cdf3c426a7dd163d8b9455bc5ea258920a6bbbdd
 		const tripsJson = await fetch('http://localhost:9292/trips', {
 			credentials: 'include'
 		});
@@ -70,7 +65,7 @@ class AllTripsContainer extends Component {
 
 		const tripParsed = await trips.json();
 		console.log(tripParsed, 'this is trip parsed');
-		
+
 		return (tripParsed, flightParsed);
 	}
 
@@ -94,12 +89,7 @@ class AllTripsContainer extends Component {
 		console.log(this.state, 'this is state');
 		return(
 			<div>
-<<<<<<< HEAD
-				{this.props.showNewTrip ? <AddNewTrip />: <TripIndex trips={this.state.trips} />}
-=======
 				{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips}/>}
->>>>>>> cdf3c426a7dd163d8b9455bc5ea258920a6bbbdd
-
 			</div>
 
 		)

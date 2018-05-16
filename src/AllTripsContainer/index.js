@@ -13,25 +13,25 @@ class AllTripsContainer extends Component {
 		}
 	}
 
-	componentDidMount() {
-		this.getTripsByUser()
-			.then((trips) => {
-				console.log(trips, "this is trips in componentDidMount");
-				this.setState({trips: trips.trip})
-			})
-			.catch((err) => {
-				console.log(err);
-			})
-	}
+	// componentDidMount() {
+	// 	this.getTripsByUser()
+	// 		.then((trips) => {
+	// 			console.log(trips, "this is trips in componentDidMount");
+	// 			this.setState({trips: trips.trip})
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log(err);
+	// 		})
+	// }
 
-	getTripsByUser = async () => {
+	// getTripsByUser = async () => {
 
-		const tripsJson = await fetch('http://localhost:9292/trips', {
-			credentials: 'include'
-		});
-		const trips = await tripsJson.json();
-		return trips;
-	}
+	// 	const tripsJson = await fetch('http://localhost:9292/trips', {
+	// 		credentials: 'include'
+	// 	});
+	// 	const trips = await tripsJson.json();
+	// 	return trips;
+	// }
 
 	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers) => {
 

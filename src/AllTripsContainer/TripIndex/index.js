@@ -7,7 +7,7 @@ const TripIndex = (props) => {
 	const trips = props.trips;
 	const tripList = trips.map((trip, i) => {
 		return (
-			<Row>
+			<Row key={trip.id}>
 				<Card body key={trip.id} className="trip">
 					<div>
 					<CardTitle>{trip.title}</CardTitle> <br/>

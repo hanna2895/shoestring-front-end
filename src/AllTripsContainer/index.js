@@ -35,22 +35,24 @@ class AllTripsContainer extends Component {
 
 	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers) => {
 
-		const flight = await fetch('http://localhost:9292/flights', {
-			method: "POST",
-			credentials: 'include',
-			body: JSON.stringify({
-				origin: origin,
-				destination: destination,
-				departureDate: departureDate,
-				returnDate: returnDate,
-				numOfPassengers: numOfPassengers
-			})
-		})
 
-		const flightParsed = await flight.json();
-		console.log(flightParsed, 'this is flight parsed');
 
-		console.log(flightParsed.added_flight.id);
+		// const flight = await fetch('http://localhost:9292/flights', {
+		// 	method: "POST",
+		// 	credentials: 'include',
+		// 	body: JSON.stringify({
+		// 		origin: origin,
+		// 		destination: destination,
+		// 		departureDate: departureDate,
+		// 		returnDate: returnDate,
+		// 		numOfPassengers: numOfPassengers
+		// 	})
+		// })
+
+		// const flightParsed = await flight.json();
+		// console.log(flightParsed, 'this is flight parsed');
+
+		// console.log(flightParsed.added_flight.id);
 
 		const trips = await fetch('http://localhost:9292/trips', {
 			method: "POST",
@@ -59,29 +61,37 @@ class AllTripsContainer extends Component {
 				title: title,
 				budget: budget,
 				amountSaved: amountSaved,
-				flight_id: flightParsed.added_flight.id
+				origin: origin,
+				destination: destination,
+				departureDate: departureDate,
+				returnDate: returnDate,
+				numOfPassengers: numOfPassengers
 			})
 		});
 
 		const tripParsed = await trips.json();
 		console.log(tripParsed, 'this is trip parsed');
+
+		// const returnedFlightFromApi = await fetch('http://localhost:9292/flights/' + flightParsed.added_flight.id, {
+		// 	credentials: 'include'
+		// })
+	
+
+		// const returnedFlight = await returnedFlightFromApi.json();
+		// console.log(returnedFlight);
+
+		// const addFlightDetails = await fetch('http://localhost:9292/flights/' + flightParsed.added_flight.id, {
+		// 	method: "PUT",
+		// 	credentials: 'include',
+		// 	body: JSON.stringify({
+		// 		// airline:
+		// 		flight_num: returnedFlight.results["0"].itineraries["0"].inbound.flights["0"].flight_number,
+		// 		fare: returnedFlight.results["0"].fare.total_price
+		// 	})
+		// })
 		
-		return (tripParsed, flightParsed);
+		return (tripParsed);
 	}
-
-
-	// getFlight = async (e) => {
-	// 	// e.preventDefault();
-	// 	console.log('get flight is being called');
-	// 	const flightJson = await fetch('localhost:9292/new_endpoint')
-	// 	fetch('http://api.sandbox.amadeus.com/v1.2/flights/low-fare-search?origin=IST&destination=BOS&departure_date=2018-10-15&return_date=2018-10-21&number_of_results=3&apikey=CsAYiUDotu5fFRg8Gl7WFv4AFCqSxRhQ')
-	// 	console.log(flightJson, 'this is flight json');
-	// 	const flight = await flightJson.json();
-	// 	console.log(flight);
-
-
-
-	// }
 
 
 

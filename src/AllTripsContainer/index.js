@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./style.css"
 import TripIndex from './TripIndex'
 import AddNewTrip from './AddNewTrip'
+import TripShow from './TripShow'
 
 class AllTripsContainer extends Component {
 	constructor() {
@@ -71,36 +72,36 @@ class AllTripsContainer extends Component {
 
 		const tripParsed = await trips.json();
 		console.log(tripParsed, 'this is trip parsed');
-
-		// const returnedFlightFromApi = await fetch('http://localhost:9292/flights/' + flightParsed.added_flight.id, {
-		// 	credentials: 'include'
-		// })
-	
-
-		// const returnedFlight = await returnedFlightFromApi.json();
-		// console.log(returnedFlight);
-
-		// const addFlightDetails = await fetch('http://localhost:9292/flights/' + flightParsed.added_flight.id, {
-		// 	method: "PUT",
-		// 	credentials: 'include',
-		// 	body: JSON.stringify({
-		// 		// airline:
-		// 		flight_num: returnedFlight.results["0"].itineraries["0"].inbound.flights["0"].flight_number,
-		// 		fare: returnedFlight.results["0"].fare.total_price
-		// 	})
-		// })
-		
 		return (tripParsed);
-
 	}
 
+	getTripById = async () => {
+		// const trip = await fetch('http://localhost:9292/trips' + id, {
+		// 	credentials: 'include'
+		// })
+	}
+	// openShowTrip = () => {
+	// 	console.log('this is renderShowTrip called from TripIndex')
+	// 	this.setState({
+	// 		tripShow: true
+	// 	})
+	// }
+	// closeShowTrip = () => {
+	// 	this.setState({
+	// 		tripShow: false
+	// 	})
+	// }
 
 
 	render() {
-		console.log(this.state, 'this is state');
 		return(
 			<div>
-				{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips}/>}
+				{this.props.tripShow ?
+	                <TripShow tripToShow={this.props.tripToShow} flightToShow={this.props.flightToShow}/>
+	                : <div>
+						{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips} openShowTrip={this.props.openShowTrip}/>}
+					</div>
+				}
 			</div>
 
 		)

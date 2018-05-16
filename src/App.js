@@ -131,8 +131,15 @@ class App extends Component {
       openModal: true,
       userToEdit: foundUser.found_user
     })
-
   }
+
+  closeModal = (e) => {
+    console.log("button being clicked and function called");
+    this.setState({
+      openModal: false,
+    })
+  }
+
   editUser = async (name, username, password, photo, id) => {
     console.log(id, 'dsajhsfjhbshjkbakshdjhkadsbhjdksakbjhkhbjdfashjkbfdaskbhjf')
     const user = await fetch('http://localhost:9292/user/' + id, {
@@ -169,6 +176,15 @@ class App extends Component {
   };
 
 
+  renderTripsIndex = () => {
+    console.log('this function is being called on the button');
+    this.setState({
+      showTripsIndex:true
+    })
+    console.log(this.state);
+  };
+
+
   render(){
     return (
       <div className="App">
@@ -180,7 +196,7 @@ class App extends Component {
             </div>
             <div className="container">
               <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo} openModal={this.openModal}/>
-              <UserEditModal modalState={this.state.openModal} user_id={this.state.user_id} user_name={this.state.name} username={this.state.username} photo={this.state.photo} editUser={this.editUser} userEditError={this.state.userEditError}/>
+              <UserEditModal openModal={this.state.openModal} closeModal={this.closeModal} user_id={this.state.user_id} user_name={this.state.name} username={this.state.username} photo={this.state.photo} editUser={this.editUser} userEditError={this.state.userEditError}/>
               <AllTripsContainer showNewTrip={this.state.showNewTrip}/>
             </div>
           </div>

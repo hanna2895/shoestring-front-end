@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, NavItem, NavLink, Button } from 'reactstrap';
+import { Container, Row, Col, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import './style.css'
 
 class Navbar extends Component {
@@ -14,27 +14,27 @@ class Navbar extends Component {
 
   render(){
     return (
-        <div className="container">
-          <div className="row">
+        <Container>
+          <Row>
 
             <Nav>
 
-            <div className="col">
+            <Col>
               <NavItem>
                 <Button onClick={this.props.renderAddNewTripForm}>Create New Trip!</Button>
               </NavItem>
-              </div>
+            </Col>
 
-              <div className="col">
+              <Col>
                 <NavItem>
                   <Button onClick={this.props.logout}>Logout</Button>
                 </NavItem>
-              </div>
+              </Col>
 
           </Nav>
 
-        </div>
-      </div>
+        </Row>
+      </Container>
     )
   }
 }

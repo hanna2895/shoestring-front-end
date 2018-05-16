@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./style.css"
 import TripIndex from './TripIndex'
 import AddNewTrip from './AddNewTrip'
+import TripShow from './TripShow'
 
 class AllTripsContainer extends Component {
 	constructor() {
@@ -70,6 +71,22 @@ class AllTripsContainer extends Component {
 		return (tripParsed, flightParsed);
 	}
 
+	getTripById = async () => {
+		// const trip = await fetch('http://localhost:9292/trips' + id, {
+		// 	credentials: 'include'
+		// })
+	}
+	// openShowTrip = () => {
+	// 	console.log('this is renderShowTrip called from TripIndex')
+	// 	this.setState({
+	// 		tripShow: true
+	// 	})
+	// }
+	// closeShowTrip = () => {
+	// 	this.setState({
+	// 		tripShow: false
+	// 	})
+	// }
 
 	// getFlight = async (e) => {
 	// 	// e.preventDefault();
@@ -87,12 +104,14 @@ class AllTripsContainer extends Component {
 
 
 	render() {
-		console.log(this.state, 'this is state');
-
 		return(
 			<div>
-				{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips}/>}
-
+				{this.props.tripShow ?
+	                <TripShow/>
+	                : <div>
+						{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips} openShowTrip={this.props.openShowTrip}/>}
+					</div>
+				}
 			</div>
 
 		)

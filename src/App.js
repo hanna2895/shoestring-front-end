@@ -18,7 +18,11 @@ class App extends Component {
       showNewTrip: false,
       photo: '',
       openModal: false,
-      userEditError: ''
+      userEditError: '',
+      tripShow: false,
+      tripToShow: [],
+      flightToShow: [],
+      hotelToShow: []
     }
   }
 
@@ -134,7 +138,6 @@ class App extends Component {
 
   }
   editUser = async (name, username, password, photo, id) => {
-    console.log(id, 'dsajhsfjhbshjkbakshdjhkadsbhjdksakbjhkhbjdfashjkbfdaskbhjf')
     const user = await fetch('http://localhost:9292/user/' + id, {
       method: 'PUT',
       credentials: 'include',
@@ -166,8 +169,27 @@ class App extends Component {
     this.setState({
       showNewTrip:true
     })
-  };
+  }
 
+  openShowTrip = async (e) => {
+    const id = parseInt(e.target.id)
+    const trip = await fetch('http://localhost:9292/trips/' + id, {
+      credentials: 'include'
+    })
+    const response = await trip.json()
+    this.setState({
+      tripShow: true,
+      tripToShow: response.trip,
+      flightToShow: response.flight
+    })
+    
+  }
+
+  closeShowTrip = () => {
+    this.setState({
+      tripShow: false
+    })
+  }
 
   render(){
     return (
@@ -176,12 +198,12 @@ class App extends Component {
           <div>
             <h1>Shoestring!</h1>
             <div>
-              <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} logout={this.logout}/>
+              <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} logout={this.logout} closeShowTrip={this.closeShowTrip}/>
             </div>
             <div className="container">
               <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo} openModal={this.openModal}/>
               <UserEditModal modalState={this.state.openModal} user_id={this.state.user_id} user_name={this.state.name} username={this.state.username} photo={this.state.photo} editUser={this.editUser} userEditError={this.state.userEditError}/>
-              <AllTripsContainer showNewTrip={this.state.showNewTrip}/>
+              <AllTripsContainer showNewTrip={this.state.showNewTrip} tripShow={this.state.tripShow} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} flightToShow={this.state.flightToShow}/>
             </div>
           </div>
           : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError} logout={this.logout}/>

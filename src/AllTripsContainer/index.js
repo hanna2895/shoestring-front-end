@@ -91,10 +91,6 @@ class AllTripsContainer extends Component {
 		return(
 			<div>
 				{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips}/>}
-
-=======
-				{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips}/>}
->>>>>>> zoe
 			</div>
 
 		)

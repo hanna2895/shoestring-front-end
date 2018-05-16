@@ -44,7 +44,6 @@ class AddNewTrip extends Component {
 	render() {
 		return (
 			<Container>
-
 					<Form>
 					<h2>Create a New Trip</h2><br />
 					<Label> Trip Title </Label>

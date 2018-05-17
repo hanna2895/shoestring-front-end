@@ -61,9 +61,7 @@ class AllTripsContainer extends Component {
 		});
 
 		const tripParsed = await trips.json();
-		console.log(tripParsed, 'this is trip parsed');
-
-		return (tripParsed);
+		this.props.closeShowTrip()
 	}
 
 	editTrip = async(title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate) => {
@@ -130,7 +128,7 @@ class AllTripsContainer extends Component {
 				<div className="row">
 					<div className="eight columns">
 					{this.props.showNewTrip ?
-						<AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>
+						<AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip} closeShowTrip={this.closeShowTrip}/>
 						: <div>
 							{this.props.showTripsIndex ?
 								<TripIndex openShowTrip={this.props.openShowTrip} trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm ={this.props.renderEditTripForm} editedTripId={this.props.editedTripId} getTheTripToEdit={this.props.getTheTripToEdit} tripToEdit={this.props.tripToEdit}/>

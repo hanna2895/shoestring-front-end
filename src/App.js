@@ -299,7 +299,7 @@ class App extends Component {
               </div>
 
               <div className="eight columns">
-              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} ditedTripId={this.state.editedTripId} tripToEdit={this.state.tripToEdit} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} hotelToShow={this.state.hotelToShow} flightToShow={this.state.flightToShow} getTheTripToEdit={this.getTheTripToEdit}/>
+              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} editedTripId={this.state.editedTripId} tripToEdit={this.state.tripToEdit} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} hotelToShow={this.state.hotelToShow} flightToShow={this.state.flightToShow} getTheTripToEdit={this.getTheTripToEdit} closeShowTrip={this.closeShowTrip}/>
               </div>
             </div>
 

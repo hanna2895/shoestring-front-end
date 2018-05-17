@@ -37,6 +37,8 @@ class AllTripsContainer extends Component {
 	}
 
 	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate) => {
+
+		this.props.loaderOn()
 		const trips = await fetch('http://localhost:9292/trips', {
 			method: "POST",
 			credentials: 'include',
@@ -69,10 +71,12 @@ class AllTripsContainer extends Component {
 				console.log(err);
 			})
 
+		this.props.loaderOff()
 	}
 
 	editTrip = async(title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate) => {
 		const id = this.props.editedTripId;
+		this.props.loaderOn()
 		const trip = await fetch('http://localhost:9292/trips/' + id, {
 			method: "PUT",
 			credentials: 'include',
@@ -104,6 +108,7 @@ class AllTripsContainer extends Component {
 			.catch((err) => {
 				console.log(err);
 			})
+		this.props.loaderOff()
 	}
 
 
@@ -127,32 +132,31 @@ class AllTripsContainer extends Component {
 			<div className="container">
 				<div className="row">
 					<div className="eight columns">
-					{this.props.showNewTrip ?
-						<AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip} closeShowTrip={this.closeShowTrip}/>
-						: <div>
-							{this.props.showTripsIndex ?
-								<TripIndex openShowTrip={this.props.openShowTrip} trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm ={this.props.renderEditTripForm} editedTripId={this.props.editedTripId} getTheTripToEdit={this.props.getTheTripToEdit} tripToEdit={this.props.tripToEdit}/>
-								: <div>
-									{this.props.showEditTrip ?
-										<EditTrip editTrip={this.editTrip} tripToEdit={this.props.tripToEdit}/>
-										: <div>
- 											<TripShow tripToShow={this.props.tripToShow} hotelToShow={this.props.hotelToShow} flightToShow={this.props.flightToShow}/>
- 										</div>
- 									}
- 								</div>
- 							}
- 						</div>
- 					}
+						{ this.props.loader ? <img src="./loader.svg" />
+							: <div>
+								{this.props.showNewTrip ?
+									<AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip} closeShowTrip={this.closeShowTrip}/>
+									: <div>
+										{this.props.showTripsIndex ?
+											<TripIndex openShowTrip={this.props.openShowTrip} trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm ={this.props.renderEditTripForm} editedTripId={this.props.editedTripId} getTheTripToEdit={this.props.getTheTripToEdit} tripToEdit={this.props.tripToEdit}/>
+											: <div>
+												{this.props.showEditTrip ?
+													<EditTrip editTrip={this.editTrip} tripToEdit={this.props.tripToEdit}/>
+													: <div>
+			 											<TripShow tripToShow={this.props.tripToShow} hotelToShow={this.props.hotelToShow} flightToShow={this.props.flightToShow}/>
+			 										</div>
+			 									}
+			 								</div>
+			 							}
+			 						</div>
+			 					}
+		 					</div>
+		 				}
+					</div>
 				</div>
 			</div>
-		</div>
-
-
-
 		)
-
 	}
-
 }
 
 export default AllTripsContainer;

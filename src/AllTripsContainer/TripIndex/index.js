@@ -14,6 +14,7 @@ const TripIndex = (props) => {
 					<CardText>Trip Budget: {trip.budget}</CardText> <br/>
 					<CardText>Amount Saved: {trip.saved} </CardText><br />
 					<Button>More Details</Button>
+					<Button id={trip.id} onClick={props.deleteTrip}> Delete Trip </Button>
 					</div>
 					<div>
 						<p>Data viz will go here</p>

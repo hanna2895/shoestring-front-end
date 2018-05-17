@@ -19,7 +19,7 @@ const TripIndex = (props) => {
 						<CardTitle>{trip.title}</CardTitle> <br/>
 						<CardText>Trip Budget: {trip.budget}</CardText> <br/>
 						<CardText>Amount Saved: {trip.saved} </CardText><br />
-						<Button id={trip.id} onClick={props.openShowTrip}>More Details</Button>
+						<button className="button button-primary" id={trip.id} onClick={props.openShowTrip}>More Details</button>
 					</div>
 					<div>
 						<p>Data viz will go here</p>

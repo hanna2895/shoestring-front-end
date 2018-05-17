@@ -125,45 +125,26 @@ class AllTripsContainer extends Component {
 	// }
 
 	render() {
-<<<<<<< HEAD
-			return(
-					<div className="container">
-						<div className="row">
-							<div className="eight columns">
-
-							{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/> : null}
-							{this.props.showTripsIndex ? <TripIndex trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm ={this.props.renderEditTripForm} /> : null }
-							{this.props.showEditTrip ? <EditTrip /> : null }
-							{this.props.tripShow ? <TripShow tripToShow={this.props.tripToShow} flightToShow={this.props.flightToShow}/>
-												:
-											<div />}
-						</div>
-					</div>
-				</div>
-			)
-		}
-=======
 		console.log(this.state, 'this is state');
 		return(
 			<div className="container">
 				<div className="row">
-					{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/> : null} 
-				
+					<div className="eight columns">
+					{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/> : null}
+
 					{this.props.showTripsIndex ? <TripIndex trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm={this.props.renderEditTripForm} editedTripId={this.props.editedTripId} getTheTripToEdit={this.props.getTheTripToEdit} tripToEdit={this.props.tripToEdit}/> : null }
  					{this.props.showEditTrip ? <EditTrip editTrip={this.editTrip} tripToEdit={this.props.tripToEdit}/> : null }
  					{this.props.tripShow ? <TripShow tripToShow={this.props.tripToShow} flightToShow={this.props.flightToShow}/>
-	       	        	: <div className="eight columns" />}
+	       	        	: <div />}
 				</div>
 			</div>
-		
+		</div>
+
 
 		)
 
 	}
 
->>>>>>> 02dfd869c6df1e48e39d4fe1cb3541f119bca465
 }
 
 export default AllTripsContainer;
-
-

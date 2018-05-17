@@ -18,7 +18,11 @@ class App extends Component {
       showNewTrip: false,
       photo: '',
       openModal: false,
-      userEditError: ''
+      userEditError: '',
+      tripShow: false,
+      tripToShow: [],
+      flightToShow: [],
+      hotelToShow: []
     }
   }
 
@@ -141,7 +145,6 @@ class App extends Component {
   }
 
   editUser = async (name, username, password, photo, id) => {
-    console.log(id, 'dsajhsfjhbshjkbakshdjhkadsbhjdksakbjhkhbjdfashjkbfdaskbhjf')
     const user = await fetch('http://localhost:9292/user/' + id, {
       method: 'PUT',
       credentials: 'include',
@@ -173,8 +176,28 @@ class App extends Component {
     this.setState({
       showNewTrip:true
     })
-  };
+  }
 
+  openShowTrip = async (e) => {
+    // console.log('kadsjfnlakdjsnvljasbvjlhabs dvcljhba sdjlchbalcblahjcbajlhsdbckjashcbakhjsbcaksjhcbd')
+    const id = parseInt(e.target.id)
+    const trip = await fetch('http://localhost:9292/trips/' + id, {
+      credentials: 'include'
+    })
+    const response = await trip.json()
+    this.setState({
+      tripShow: true,
+      tripToShow: response.trip,
+      flightToShow: response.flight
+    })
+    
+  }
+
+  closeShowTrip = () => {
+    this.setState({
+      tripShow: false
+    })
+  }
 
   renderTripsIndex = () => {
     console.log('this function is being called on the button');
@@ -189,19 +212,53 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.loggedIn ?
-          <div>
-            <h1>Shoestring!</h1>
-            <div>
-              <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} logout={this.logout}/>
+
+          <div className="container">
+            <div className="row">
+              <div className="twelve columns">
+                <h1>Shoestring!</h1>
+              </div>
             </div>
-            <div className="container">
-              <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo} openModal={this.openModal}/>
-              <UserEditModal openModal={this.state.openModal} closeModal={this.closeModal} user_id={this.state.user_id} user_name={this.state.name} username={this.state.username} photo={this.state.photo} editUser={this.editUser} userEditError={this.state.userEditError}/>
-              <AllTripsContainer showNewTrip={this.state.showNewTrip}/>
+
+              <div className="row">
+                <div className="twelve columns">
+                  <br />
+                </div>
+              </div>
+
+
+            <div className="row">
+              <div className="twelve columns">
+                <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} logout={this.logout}/>
+              </div>
             </div>
+
+
+            <div className="row">
+              <div className="twelve columns">
+                <br />
+                <br />
+                <br />
+              </div>
+            </div>
+
+
+            <div className="row">
+              <div className="four columns">
+                <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo} openModal={this.openModal}/>
+                <UserEditModal openModal={this.state.openModal} closeModal={this.closeModal} user_id={this.state.user_id} user_name={this.state.name} username={this.state.username} photo={this.state.photo} editUser={this.editUser} userEditError={this.state.userEditError}/>
+              </div>
+
+              <div className="eight columns">
+                <AllTripsContainer showNewTrip={this.state.showNewTrip} tripShow={this.state.tripShow} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} flightToShow={this.state.flightToShow}/>
+              </div>
+            </div>
+
           </div>
+
           : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError} logout={this.logout}/>
         }
+
       </div>
     )
   }

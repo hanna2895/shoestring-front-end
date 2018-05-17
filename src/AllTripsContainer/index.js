@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./style.css"
 import TripIndex from './TripIndex'
 import AddNewTrip from './AddNewTrip'
+import TripShow from './TripShow'
 
 class AllTripsContainer extends Component {
 	constructor() {
@@ -29,13 +30,13 @@ class AllTripsContainer extends Component {
 		const tripsJson = await fetch('http://localhost:9292/trips', {
 			credentials: 'include'
 		});
+
 		const trips = await tripsJson.json();
 		return trips;
 	}
 
-	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers) => {
-
-
+	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate) => {
+		console.log(title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate)
 		const trips = await fetch('http://localhost:9292/trips', {
 			method: "POST",
 			credentials: 'include',
@@ -47,16 +48,21 @@ class AllTripsContainer extends Component {
 				destination: destination,
 				departureDate: departureDate,
 				returnDate: returnDate,
-				numOfPassengers: numOfPassengers
+				numOfPassengers: numOfPassengers,
+				locationCode: locationCode,
+				// address: address,
+				checkInDate: checkInDate,
+				checkOutDate: checkOutDate
+
 			})
 		});
 
 		const tripParsed = await trips.json();
 		console.log(tripParsed, 'this is trip parsed');
-		
-		return (tripParsed);
 
+		return (tripParsed);
 	}
+
 
 	deleteTrip = async (e) => {
 		e.preventDefault();
@@ -76,13 +82,34 @@ class AllTripsContainer extends Component {
 		})
 	}
 
-
+	// openShowTrip = () => {
+	// 	console.log('this is renderShowTrip called from TripIndex')
+	// 	this.setState({
+	// 		tripShow: true
+	// 	})
+	// }
+	// closeShowTrip = () => {
+	// 	this.setState({
+	// 		tripShow: false
+	// 	})
+	// }
 
 	render() {
-		console.log(this.state, 'this is state');
 		return(
 			<div>
 				{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips} deleteTrip={this.deleteTrip}/>}
+			</div>
+
+			<div className="container">
+				<div className="row">
+					{this.props.tripShow ?
+	                	<TripShow tripToShow={this.props.tripToShow} flightToShow={this.props.flightToShow}/>
+	                	: <div className="eight columns">
+
+							{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips} openShowTrip={this.props.openShowTrip}/>}
+						</div>
+					}
+				</div>
 			</div>
 
 		)

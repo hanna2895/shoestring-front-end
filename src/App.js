@@ -19,7 +19,11 @@ class App extends Component {
       showTripsIndex: true,
       photo: '',
       openModal: false,
-      userEditError: ''
+      userEditError: '',
+      tripShow: false,
+      tripToShow: [],
+      flightToShow: [],
+      hotelToShow: []
     }
   }
 
@@ -142,7 +146,6 @@ class App extends Component {
   }
 
   editUser = async (name, username, password, photo, id) => {
-    console.log(id, 'dsajhsfjhbshjkbakshdjhkadsbhjdksakbjhkhbjdfashjkbfdaskbhjf')
     const user = await fetch('http://localhost:9292/user/' + id, {
       method: 'PUT',
       credentials: 'include',
@@ -174,8 +177,28 @@ class App extends Component {
     this.setState({
       showNewTrip:true
     })
-  };
+  }
 
+  openShowTrip = async (e) => {
+    // console.log('kadsjfnlakdjsnvljasbvjlhabs dvcljhba sdjlchbalcblahjcbajlhsdbckjashcbakhjsbcaksjhcbd')
+    const id = parseInt(e.target.id)
+    const trip = await fetch('http://localhost:9292/trips/' + id, {
+      credentials: 'include'
+    })
+    const response = await trip.json()
+    this.setState({
+      tripShow: true,
+      tripToShow: response.trip,
+      flightToShow: response.flight
+    })
+
+  }
+
+  closeShowTrip = () => {
+    this.setState({
+      tripShow: false
+    })
+  }
 
   navigateToIndex = (e) => {
     console.log("button is clikkked");
@@ -228,7 +251,7 @@ class App extends Component {
               </div>
 
               <div className="eight columns">
-                <AllTripsContainer showNewTrip={this.state.showNewTrip} />
+                <AllTripsContainer showNewTrip={this.state.showNewTrip} tripShow={this.state.tripShow} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} flightToShow={this.state.flightToShow}/>
               </div>
             </div>
 

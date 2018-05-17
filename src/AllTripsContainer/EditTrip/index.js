@@ -28,12 +28,19 @@ class EditTrip extends Component {
 		})
 	}
 
-	componentWillReceiveProps(e, nextProps) {
-		const target = e.target;
-		const value = target.value;
-		const name = target.name;
+	componentDidMount(nextProps) {
 		this.setState({
-			[name]: value
+			title: this.props.tripToEdit.trip.title,
+			origin: this.props.tripToEdit.flight.origin,
+			destination: this.props.tripToEdit.flight.destination,
+			budget: this.props.tripToEdit.trip.budget,
+			amountSaved: this.props.tripToEdit.trip.saved,
+			departureDate: this.props.tripToEdit.flight.departs_at.substring(0,10),
+			returnDate: this.props.tripToEdit.flight.arrives_at.substring(0,10),
+			numOfPassengers: this.props.tripToEdit.flight.num_of_adults,
+			locationCode: '',
+			checkInDate: '',
+			checkOutDate: ''
 		})
 	}
 
@@ -44,6 +51,9 @@ class EditTrip extends Component {
 	}
 
 	render() {
+
+		console.log(this.props);
+
 		return (
 			<div className="container">
 				<div className="row">
@@ -51,28 +61,28 @@ class EditTrip extends Component {
 						<form>
 							<h1>Edit Trip</h1>
 							<label> Trip Title </label><br /> 
-							<input type="text" name="title" value={this.props.tripToEdit.trip.title} onChange={this.handleInput} /><br />
+							<input type="text" name="title" value={this.state.title} onChange={this.handleInput} /><br />
 
 							<label>Origin </label><br/>
-							<input type="text" name="origin" value={this.props.tripToEdit.flight.origin} onChange={this.handleInput} /> <br />
+							<input type="text" name="origin" value={this.state.origin} onChange={this.handleInput} /> <br />
 
 							<label>Destination </label><br/>
-							<input type="text" name="destination" value={this.props.tripToEdit.flight.destination} onChange={this.handleInput} /> <br />
+							<input type="text" name="destination" value={this.state.destination} onChange={this.handleInput} /> <br />
 
 							<label>Budget </label><br/>
-							<input type="text" name="budget" value={this.props.tripToEdit.trip.budget} onChange={this.handleInput} /> <br />
+							<input type="text" name="budget" value={this.state.budget} onChange={this.handleInput} /> <br />
 
 							<label>Amount Saved </label><br/>
-							<input type="text" name="amountSaved" value={this.props.tripToEdit.trip.saved} onChange={this.handleInput} /> <br />
+							<input type="text" name="amountSaved" value={this.state.amountSaved} onChange={this.handleInput} /> <br />
 
 							<label>Departure Date </label><br/>
-							<input type="text" name="departureDate" value={this.props.tripToEdit.flight.departs_at} onChange={this.handleInput} /> <br />
+							<input type="text" name="departureDate" value={this.state.departureDate} onChange={this.handleInput} /> <br />
 
 							<label>Return Date </label><br/>
-							<input type="text" name="returnDate" value={this.props.tripToEdit.flight.arrives_at} onChange={this.handleInput} /> <br />
+							<input type="text" name="returnDate" value={this.state.returnDate} onChange={this.handleInput} /> <br />
 
 							<label>Number of Passengers</label><br/>
-							<input type="text" name="numOfPassengers" value={this.props.tripToEdit.flight.num_of_adults} onChange={this.handleInput} /> <br />
+							<input type="text" name="numOfPassengers" value={this.state.numOfPassengers} onChange={this.handleInput} /> <br />
 
 							<label>Hotel Location ** Use Airport Code**</label><br/>
 							<input type="text" name="locationCode" value={this.state.locationCode} onChange={this.handleInput} /> <br />

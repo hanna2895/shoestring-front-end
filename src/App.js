@@ -231,7 +231,7 @@ class App extends Component {
           <div className="container">
             <div className="row">
               <div className="twelve columns">
-                <h1>Shoestring!</h1>
+                <h1 className="header">Shoestring!</h1>
               </div>
             </div>
 

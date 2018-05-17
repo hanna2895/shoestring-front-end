@@ -98,20 +98,19 @@ class AllTripsContainer extends Component {
 
 	render() {
 			return(
-				<div>
-
-				</div>
 					<div className="container">
-					<div className="row">
-						{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/> : null}
+						<div className="row">
+							<div className="eight columns">
 
-						{this.props.showTripsIndex ? <TripIndex trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm ={this.props.renderEditTripForm} /> : null }
-	 					{this.props.showEditTrip ? <EditTrip /> : null }
-	 					{this.props.tripShow ? <TripShow tripToShow={this.props.tripToShow} flightToShow={this.props.flightToShow}/>
-		       	        	: <div className="eight columns" />}
+							{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/> : null}
+							{this.props.showTripsIndex ? <TripIndex trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm ={this.props.renderEditTripForm} /> : null }
+							{this.props.showEditTrip ? <EditTrip /> : null }
+							{this.props.tripShow ? <TripShow tripToShow={this.props.tripToShow} flightToShow={this.props.flightToShow}/>
+												:
+											<div />}
+						</div>
 					</div>
 				</div>
-
 			)
 		}
 }

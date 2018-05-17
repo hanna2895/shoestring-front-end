@@ -201,7 +201,7 @@ class App extends Component {
     this.setState({
       showTripsIndex:true,
       showNewTrip: false,
-      showEditTrip: false
+      showEditTrip: false,
       tripShow: false
     })
   }

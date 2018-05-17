@@ -102,22 +102,14 @@ class AllTripsContainer extends Component {
 		// const isHidden = this.props.showTripsIndex ? null : hideDiv; 
 
 		return(
-			<div className="AllTripsDiv">
-				{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/> : null} 
-				
-				{this.props.showTripsIndex ? <TripIndex trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm ={this.props.renderEditTripForm} /> : null }
- 				{this.props.showEditTrip ? <EditTrip /> : null }
-			</div>
-
 			<div className="container">
 				<div className="row">
-					{this.props.tripShow ?
-	                	<TripShow tripToShow={this.props.tripToShow} flightToShow={this.props.flightToShow}/>
-	                	: <div className="eight columns">
+					{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/> : null}
 
-							{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips} openShowTrip={this.props.openShowTrip}/>}
-						</div>
-					}
+					{this.props.showTripsIndex ? <TripIndex trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm ={this.props.renderEditTripForm} /> : null }
+ 					{this.props.showEditTrip ? <EditTrip /> : null }
+ 					{this.props.tripShow ? <TripShow tripToShow={this.props.tripToShow} flightToShow={this.props.flightToShow}/>
+	       	        	: <div className="eight columns" />}
 				</div>
 			</div>
 

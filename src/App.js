@@ -193,7 +193,7 @@ class App extends Component {
     })
     const response = await trip.json()
     this.setState({
-      
+
       showNewTrip: false,
       showTripsIndex: false,
       showEditTrip: false,
@@ -214,7 +214,6 @@ class App extends Component {
   }
 
   navigateToIndex = (e) => {
-    // console.log("button is clikkked");
     this.setState({
       showNewTrip:false,
       tripShow: false,
@@ -242,7 +241,7 @@ class App extends Component {
   }
 
   renderEditTripForm = async (e) => {
-    const id = e.currentTarget.previousSibling.id;
+    const id = e.currentTarget.previousSibling.previousSibling.id;
 
     const tripJson = await fetch('http://localhost:9292/trips/' + id, {
       credentials: 'include'

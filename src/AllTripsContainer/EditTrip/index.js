@@ -38,9 +38,9 @@ class EditTrip extends Component {
 			departureDate: this.props.tripToEdit.flight.departs_at.substring(0,10),
 			returnDate: this.props.tripToEdit.flight.arrives_at.substring(0,10),
 			numOfPassengers: this.props.tripToEdit.flight.num_of_adults,
-			locationCode: '',
-			checkInDate: '',
-			checkOutDate: ''
+			locationCode: this.props.tripToEdit.hotel.location_code,
+			checkInDate: this.props.tripToEdit.hotel.check_in,
+			checkOutDate: this.props.tripToEdit.hotel.check_out
 		})
 	}
 
@@ -60,7 +60,7 @@ class EditTrip extends Component {
 					<div className="eight columns">
 						<form>
 							<h1>Edit Trip</h1>
-							<label> Trip Title </label><br /> 
+							<label> Trip Title </label><br />
 							<input type="text" name="title" value={this.state.title} onChange={this.handleInput} /><br />
 
 							<label>Origin </label><br/>

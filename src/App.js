@@ -214,7 +214,6 @@ class App extends Component {
   }
 
   navigateToIndex = (e) => {
-    // console.log("button is clikkked");
     this.setState({
       showNewTrip:false,
       tripShow: false,

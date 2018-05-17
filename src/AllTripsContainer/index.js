@@ -97,7 +97,15 @@ class AllTripsContainer extends Component {
 		const response = await trip.json();
 		console.log(response);
 
-		return response;
+		this.props.closeShowTrip()
+		this.getTripsByUser()
+			.then((trips) => {
+				// console.log(trips, "this is trips in componentDidMount");
+				this.setState({trips: trips.trip})
+			})
+			.catch((err) => {
+				console.log(err);
+			})
 	}
 
 

@@ -40,7 +40,11 @@ class EditTrip extends Component {
 			numOfPassengers: this.props.tripToEdit.flight.num_of_adults,
 			locationCode: this.props.tripToEdit.hotel.location_code,
 			checkInDate: this.props.tripToEdit.hotel.check_in,
+<<<<<<< HEAD
 			checkOutDate: this.props.tripToEdit.hotel.check_out,
+=======
+			checkOutDate: this.props.tripToEdit.hotel.check_out
+>>>>>>> zoe
 		})
 	}
 

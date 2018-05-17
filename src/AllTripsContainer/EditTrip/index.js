@@ -40,15 +40,11 @@ class EditTrip extends Component {
 			numOfPassengers: this.props.tripToEdit.flight.num_of_adults,
 			locationCode: this.props.tripToEdit.hotel.location_code,
 			checkInDate: this.props.tripToEdit.hotel.check_in,
-<<<<<<< HEAD
-			checkOutDate: this.props.tripToEdit.hotel.check_out,
-=======
 			checkOutDate: this.props.tripToEdit.hotel.check_out
->>>>>>> zoe
 		})
 	}
 
-	handleSubmit = (e) => { // this will need to change
+	handleSubmit = (e) => { 
 		e.preventDefault();
 		this.props.editTrip(this.state.title, this.state.origin, this.state.destination, this.state.budget, this.state.amountSaved, this.state.departureDate, this.state.returnDate, this.state.numOfPassengers, this.state.locationCode, this.state.checkInDate,
 		this.state.checkOutDate)

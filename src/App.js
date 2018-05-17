@@ -190,7 +190,7 @@ class App extends Component {
     })
     const response = await trip.json()
     this.setState({
-      
+
       showNewTrip: false,
       showTripsIndex: false,
       showEditTrip: false,

@@ -28,14 +28,14 @@ class EditTrip extends Component {
 		})
 	}
 
-	componentWillReceiveProps(e, nextProps) {
-		const target = e.target;
-		const value = target.value;
-		const name = target.name;
-		this.setState({
-			[name]: value
-		})
-	}
+	// componentWillReceiveProps(e, nextProps) {
+	// 	const target = e.target;
+	// 	const value = target.value;
+	// 	const name = target.name;
+	// 	this.setState({
+	// 		[name]: value
+	// 	})
+	// }
 
 	handleSubmit = (e) => { // this will need to change
 		e.preventDefault();
@@ -44,6 +44,8 @@ class EditTrip extends Component {
 	}
 
 	render() {
+		const departureDate = this.props.tripToEdit.flight.departs_at.substring(0,10);
+		const returnDate = this.props.tripToEdit.flight.arrives_at.substring(0,10);
 		return (
 			<div className="container">
 				<div className="row">
@@ -66,10 +68,10 @@ class EditTrip extends Component {
 							<input type="text" name="amountSaved" value={this.props.tripToEdit.trip.saved} onChange={this.handleInput} /> <br />
 
 							<label>Departure Date </label><br/>
-							<input type="text" name="departureDate" value={this.props.tripToEdit.flight.departs_at} onChange={this.handleInput} /> <br />
+							<input type="text" name="departureDate" value={departureDate} onChange={this.handleInput} /> <br />
 
 							<label>Return Date </label><br/>
-							<input type="text" name="returnDate" value={this.props.tripToEdit.flight.arrives_at} onChange={this.handleInput} /> <br />
+							<input type="text" name="returnDate" value={returnDate} onChange={this.handleInput} /> <br />
 
 							<label>Number of Passengers</label><br/>
 							<input type="text" name="numOfPassengers" value={this.props.tripToEdit.flight.num_of_adults} onChange={this.handleInput} /> <br />

@@ -209,10 +209,10 @@ class App extends Component {
   navigateToIndex = (e) => {
     console.log("button is clikkked");
     this.setState({
-      showNewTrip:false
+      showNewTrip:false,
+      tripShow: false
     })
   }
-
 
   renderEditTripForm = () => {
     console.log('renderEditTripForm is being called');
@@ -222,7 +222,6 @@ class App extends Component {
       showTripsIndex: false
     })
   }
-
 
   render(){
     return (
@@ -242,13 +241,11 @@ class App extends Component {
                 </div>
               </div>
 
-
             <div className="row">
               <div className="twelve columns">
                 <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} navigateToIndex={this.navigateToIndex} logout={this.logout}/>
               </div>
             </div>
-
 
             <div className="row">
               <div className="twelve columns">

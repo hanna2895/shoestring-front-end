@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 class TripShow extends Component{
 	render(){
+		console.log(this.props);
 		return(
 			<div>
 				<h1>{this.props.tripToShow.title}</h1>

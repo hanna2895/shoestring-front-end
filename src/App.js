@@ -187,11 +187,14 @@ class App extends Component {
 
   openShowTrip = async (e) => {
     // console.log("this is openShowTrip button")
-    const id = parseInt(e.target.id)
+    const id = parseInt(e.target.parentNode.id)
+    console.log(id, 'this is the id in openshowtrip');
+    console.log(e.currentTarget.parentNode);
     const trip = await fetch('http://localhost:9292/trips/' + id, {
       credentials: 'include'
     })
     const response = await trip.json()
+    console.log(response, 'this is response from openshowtrip');
     this.setState({
       
       showNewTrip: false,
@@ -242,9 +245,9 @@ class App extends Component {
   }
 
   renderEditTripForm = async (e) => {
-    const id = e.currentTarget.previousSibling.previousSibling.id;
+    const id = e.currentTarget.parentNode.id;
     console.log(id, 'this is id in renderEditTripForm');
-    console.log(e.currentTarget.previousSibling);
+    console.log(e.currentTarget.previousSibling.prevoiusSibling);
 
     const tripJson = await fetch('http://localhost:9292/trips/' + id, {
       credentials: 'include'

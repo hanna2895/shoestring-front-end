@@ -10,11 +10,11 @@ const TripIndex = (props) => {
 
 			<Row key={trip.id}>
 				<Card body key={trip.id} className="trip">
-					<div>
+					<div id={trip.id}>
 						<CardTitle>{trip.title}</CardTitle> <br/>
 						<CardText>Trip Budget: {trip.budget}</CardText> <br/>
 						<CardText>Amount Saved: {trip.saved} </CardText><br />
-						<button className="button button-primary" id={trip.id} onClick={props.openShowTrip}>More Details</button><br />
+						<button className="button button-primary" onClick={props.openShowTrip}>More Details</button><br />
 						<button className="button button-primary" onClick={props.renderEditTripForm}>Edit Trip </button><br /><br />
 						<button className="button button-primary" onClick={props.deleteTrip}> Delete Trip </button><br />
 

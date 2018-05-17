@@ -60,9 +60,7 @@ class AllTripsContainer extends Component {
 		});
 
 		const tripParsed = await trips.json();
-		console.log(tripParsed, 'this is trip parsed');
-
-		return (tripParsed);
+		this.props.closeShowTrip()
 	}
 
 
@@ -105,7 +103,7 @@ class AllTripsContainer extends Component {
 			<div className="container">
 				<div className="row">
 					{this.props.showNewTrip ?
-						<AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>
+						<AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip} closeShowTrip={this.closeShowTrip}/>
 						: <div>
 							{this.props.showTripsIndex ? 
 								<TripIndex openShowTrip={this.props.openShowTrip} trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm ={this.props.renderEditTripForm} /> 

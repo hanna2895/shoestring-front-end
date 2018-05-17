@@ -50,51 +50,50 @@ class AddNewTrip extends Component {
 
 	render() {
 		return (
-					<div className="container">
-						<div className="row">
-							<div className="eight columns">
-								{/* <button onClick={this.navigateToIndex}>Back to Trips</button> */}
-								<form>
-										<h2>Create a New Trip</h2><br />
-											<label> Trip Title </label><br />
-											<input type="text" name="title" value={this.state.title} onChange={this.handleInput} /> <br />
+			<div className="container">
+				<div className="row">
+					<div className="eight columns">
+						<h2>Create a New Trip</h2><br />
+						<form  onSubmit={this.handleSubmit}>
+							<label> Trip Title </label><br />
+							<input type="text" name="title" value={this.state.title} onChange={this.handleInput} /> <br />
 
-											<label> Origin </label><br />
-											<input type="text" name="origin" value={this.state.origin} onChange={this.handleInput} /><br />
+							<label> Origin </label><br />
+							<input type="text" name="origin" value={this.state.origin} onChange={this.handleInput} /><br />
 
-											<label> Destination </label><br />
-											<input type="text" name="destination" value={this.state.destination} onChange={this.handleInput}/><br />
+							<label> Destination </label><br />
+							<input type="text" name="destination" value={this.state.destination} onChange={this.handleInput}/><br />
 
-											<label>Budget</label><br />
-											$<input type="text" name="budget" value={this.state.budget} onChange={this.handleInput} /><br />
+							<label>Budget</label><br />
+							$<input type="text" name="budget" value={this.state.budget} onChange={this.handleInput} /><br />
 
-											<label>Amount Saved</label><br />
-											$<input type="text" name="amountSaved" value={this.state.amountSaved} onChange={this.handleInput} /><br />
+							<label>Amount Saved</label><br />
+							$<input type="text" name="amountSaved" value={this.state.amountSaved} onChange={this.handleInput} /><br />
 
-											<label>Departure Date</label><br />
-											<input type="text" name="departureDate" value={this.state.departureDate} onChange={this.handleInput} /><br />
+							<label>Departure Date</label><br />
+							<input type="text" name="departureDate" value={this.state.departureDate} onChange={this.handleInput} /><br />
 
-											<label>Return Date</label><br />
-											<input type="text" name="returnDate" value={this.state.returnDate} onChange={this.handleInput} /><br />
+							<label>Return Date</label><br />
+							<input type="text" name="returnDate" value={this.state.returnDate} onChange={this.handleInput} /><br />
 
-											<label>Number of Passengers</label><br />
-											<input type="text" name="numOfPassengers" value={this.state.numOfPassengers} onChange={this.handleInput} /><br />
+							<label>Number of Passengers</label><br />
+							<input type="text" name="numOfPassengers" value={this.state.numOfPassengers} onChange={this.handleInput} /><br />
 
-											<label>Hotel Location **Use Airport Code**</label><br />
-											<input type="text" name="locationCode" value={this.state.locationCode} onChange={this.handleInput} /><br />
+							<label>Hotel Location **Use Airport Code**</label><br />
+							<input type="text" name="locationCode" value={this.state.locationCode} onChange={this.handleInput} /><br />
 
-											<label>Check In Date</label><br />
-											<input type="text" name="checkInDate" value={this.state.checkInDate} onChange={this.handleInput} /><br />
+							<label>Check In Date</label><br />
+							<input type="text" name="checkInDate" value={this.state.checkInDate} onChange={this.handleInput} /><br />
 
-											<label>Check Out Date</label><br />
-											<input type="text" name="checkOutDate" value={this.state.checkOutDate} onChange={this.handleInput} /><br />
+							<label>Check Out Date</label><br />
+							<input type="text" name="checkOutDate" value={this.state.checkOutDate} onChange={this.handleInput} /><br />
 
-											<button type="submit" onClick={this.handleSubmit}>Add Trip </button>
+							<button type="submit">Add Trip </button>
 
-									</form>
-							</div>
-						</div>
+						</form>
 					</div>
+				</div>
+			</div>
 
 
 		)

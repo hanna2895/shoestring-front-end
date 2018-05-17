@@ -18,6 +18,8 @@ class App extends Component {
       showNewTrip: false,
       showTripsIndex: true,
       showEditTrip: false,
+      editedTripId: '',
+      tripToEdit: '',
       photo: '',
       openModal: false,
       userEditError: '',
@@ -216,16 +218,43 @@ class App extends Component {
     })
   }
 
-  renderEditTripForm = () => {
-    console.log('renderEditTripForm is being called');
+  getTheTripToEdit = async () => {
+    const id = this.state.editedTripId;
+    console.log(id, 'this is id in getthetriptoedit');
+    console.log(this.editedTripId);
+    const tripJson = await fetch('http://localhost:9292/trips/' + id, {
+      credentials: 'include'
+    });
+
+    const trip = await tripJson.json();
+    console.log(trip.trip);
+    console.log(trip.flight);
+    console.log(trip.outbound);
+    console.log(trip.inbound);
     this.setState({
-      showEditTrip: true,
-      showNewTrip: false,
-      showTripsIndex: false
+      tripToEdit: trip
     })
   }
 
+  renderEditTripForm = async (e) => {
+    const id = e.currentTarget.previousSibling.id;
+
+    const tripJson = await fetch('http://localhost:9292/trips/' + id, {
+      credentials: 'include'
+    });
+    const trip = await tripJson.json();
+    console.log(id, 'this is id in render edit trip form');
+    this.setState({
+      showEditTrip: true,
+      showNewTrip: false,
+      showTripsIndex: false,
+      editedTripId: id,
+      tripToEdit: trip
+    });
+  }
+
   render(){
+    console.log(this.state, 'this is state in app.js');
     return (
       <div className="App">
         {this.state.loggedIn ?
@@ -266,7 +295,7 @@ class App extends Component {
               </div>
 
               <div className="eight columns">
-              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm}/>
+              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} editedTripId={this.state.editedTripId} tripToEdit={this.state.tripToEdit} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm} getTheTripToEdit={this.getTheTripToEdit}/>
               </div>
             </div>
 

@@ -98,6 +98,9 @@ class AllTripsContainer extends Component {
 
 	render() {
 			return(
+				<div>
+
+				</div>
 					<div className="container">
 					<div className="row">
 						{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/> : null}

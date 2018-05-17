@@ -106,7 +106,7 @@ class App extends Component {
     const userLogout = await fetch('http://localhost:9292/user/logout', {
         // method: 'GET'
     });
-    console.log(userLogout, "logout button being clicked");
+    // console.log(userLogout, "logout button being clicked");
     const logoutResponse = await userLogout.json();
     if(logoutResponse.success){
       this.setState({
@@ -120,7 +120,7 @@ class App extends Component {
   }
 
   showUserSidebar = async () => {
-    console.log('show user sidebar');
+    // console.log('show user sidebar');
 
     const userJson = await fetch('http://localhost:9292/user', {
       credentials: 'include'
@@ -143,7 +143,7 @@ class App extends Component {
   }
 
   closeModal = (e) => {
-    console.log("button being clicked and function called");
+    // console.log("button being clicked and function called");
     this.setState({
       openModal: false,
     })
@@ -161,7 +161,7 @@ class App extends Component {
       })
     });
     const response = await user.json()
-    console.log(response.user)
+    // console.log(response.user)
     if(response.success){
       this.setState({
         name: name,
@@ -177,7 +177,7 @@ class App extends Component {
   }
 
   renderAddNewTripForm = () => {
-    console.log('this add new trip function is being called on the button');
+    // console.log('this add new trip function is being called on the button');
     this.setState({
       showNewTrip: true,
       showTripsIndex: false,
@@ -186,17 +186,22 @@ class App extends Component {
   }
 
   openShowTrip = async (e) => {
+    // console.log("this is openShowTrip button")
     const id = parseInt(e.target.id)
     const trip = await fetch('http://localhost:9292/trips/' + id, {
       credentials: 'include'
     })
     const response = await trip.json()
     this.setState({
+      
+      showNewTrip: false,
+      showTripsIndex: false,
+      showEditTrip: false,
       tripShow: true,
       tripToShow: response.trip,
-      flightToShow: response.flight
+      flightToShow: response.flight,
+      hotelToShow: response.hotel
     })
-
   }
 
   closeShowTrip = () => {
@@ -209,7 +214,7 @@ class App extends Component {
   }
 
   navigateToIndex = (e) => {
-    console.log("button is clikkked");
+    // console.log("button is clikkked");
     this.setState({
       showNewTrip:false,
       tripShow: false,
@@ -254,7 +259,6 @@ class App extends Component {
   }
 
   render(){
-    console.log(this.state, 'this is state in app.js');
     return (
       <div className="App">
         {this.state.loggedIn ?
@@ -295,7 +299,7 @@ class App extends Component {
               </div>
 
               <div className="eight columns">
-              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} editedTripId={this.state.editedTripId} tripToEdit={this.state.tripToEdit} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm} getTheTripToEdit={this.getTheTripToEdit}/>
+              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} ditedTripId={this.state.editedTripId} tripToEdit={this.state.tripToEdit} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} hotelToShow={this.state.hotelToShow} flightToShow={this.state.flightToShow} getTheTripToEdit={this.getTheTripToEdit}/>
               </div>
             </div>
 

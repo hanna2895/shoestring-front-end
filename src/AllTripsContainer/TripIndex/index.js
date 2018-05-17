@@ -7,11 +7,6 @@ import "../style.css";
 
 const TripIndex = (props) => {
 	const trips = props.trips;
-	// const startEdit = () => {
-	// 	this.props.getTheTripToEdit
-	// 	this.props.renderEditTripForm
-	// }
-	console.log(props, 'this is props in trip index');
 	const tripList = trips.map((trip, i) => {
 		return (
 			<Row key={trip.id}>
@@ -21,7 +16,7 @@ const TripIndex = (props) => {
 						<CardText>Trip Budget: {trip.budget}</CardText> <br/>
 						<CardText>Amount Saved: {trip.saved} </CardText><br />
 						<Button id={trip.id} onClick={props.openShowTrip}>More Details</Button>
-						<Button id={trip.id} onClick={props.deleteTrip}> Delete Trip </Button>
+						<Button onClick={props.deleteTrip}> Delete Trip </Button>
 						<Button onClick={props.renderEditTripForm}>Edit Trip </Button>
 
 					</div>

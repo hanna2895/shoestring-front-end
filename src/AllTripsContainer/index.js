@@ -61,6 +61,8 @@ class AllTripsContainer extends Component {
 		});
 
 		const tripParsed = await trips.json();
+
+		console.log(tripParsed);
 		this.props.closeShowTrip()
 		this.getTripsByUser()
 			.then((trips) => {
@@ -111,7 +113,8 @@ class AllTripsContainer extends Component {
 
 	deleteTrip = async (e) => {
 		e.preventDefault();
-		const id = parseInt(e.target.previousSibling.id) // this may have to change based on samat's stuff
+		console.log(e.currentTarget.parentNode, 'this is delete current target parent node');
+		const id = parseInt(e.target.parentNode.id) // this may have to change based on samat's stuff
 		// console.log(id);
 		const trip = await fetch('http://localhost:9292/trips/' + id, {
 			method: "DELETE",

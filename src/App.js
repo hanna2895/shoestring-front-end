@@ -26,7 +26,8 @@ class App extends Component {
       tripShow: false,
       tripToShow: [],
       flightToShow: [],
-      hotelToShow: []
+      hotelToShow: [],
+      loader: false
     }
   }
 
@@ -262,6 +263,26 @@ class App extends Component {
     });
   }
 
+  loaderOn = () => {
+    this.setState({
+      loader: true,
+      showTripsIndex:false,
+      showNewTrip: false,
+      showEditTrip: false,
+      tripShow: false
+    })
+  }
+
+  loaderOff = () => {
+    this.setState({
+      loader: false,
+      showTripsIndex:true,
+      showNewTrip: false,
+      showEditTrip: false,
+      tripShow: false
+    })
+  }
+
   render(){
     return (
       <div className="App">
@@ -303,7 +324,7 @@ class App extends Component {
               </div>
 
               <div className="eight columns">
-              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} editedTripId={this.state.editedTripId} tripToEdit={this.state.tripToEdit} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} hotelToShow={this.state.hotelToShow} flightToShow={this.state.flightToShow} getTheTripToEdit={this.getTheTripToEdit} closeShowTrip={this.closeShowTrip}/>
+              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} editedTripId={this.state.editedTripId} tripToEdit={this.state.tripToEdit} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} hotelToShow={this.state.hotelToShow} flightToShow={this.state.flightToShow} getTheTripToEdit={this.getTheTripToEdit} closeShowTrip={this.closeShowTrip} loader={this.state.loader} loaderOn={this.loaderOn} loaderOff={this.loaderOff}/>
 
               </div>
             </div>

@@ -20,7 +20,7 @@ class AllTripsContainer extends Component {
 	componentDidMount() {
 		this.getTripsByUser()
 			.then((trips) => {
-				console.log(trips, "this is trips in componentDidMount");
+				// console.log(trips, "this is trips in componentDidMount");
 				this.setState({trips: trips.trip})
 			})
 			.catch((err) => {
@@ -39,7 +39,7 @@ class AllTripsContainer extends Component {
 	}
 
 	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate) => {
-		console.log(title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate)
+		// console.log(title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate)
 		const trips = await fetch('http://localhost:9292/trips', {
 			method: "POST",
 			credentials: 'include',
@@ -96,8 +96,8 @@ class AllTripsContainer extends Component {
 
 	deleteTrip = async (e) => {
 		e.preventDefault();
-		const id = e.currentTarget.id; // this may have to change based on samat's stuff
-		console.log(id);
+		const id = parseInt(e.target.previousSibling.id) // this may have to change based on samat's stuff
+		// console.log(id);
 		const trip = await fetch('http://localhost:9292/trips/' + id, {
 			method: "DELETE",
 			credentials: 'include'
@@ -125,19 +125,31 @@ class AllTripsContainer extends Component {
 	// }
 
 	render() {
-		console.log(this.state, 'this is state');
 		return(
 			<div className="container">
 				<div className="row">
-					{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/> : null} 
-				
-					{this.props.showTripsIndex ? <TripIndex trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm={this.props.renderEditTripForm} editedTripId={this.props.editedTripId} getTheTripToEdit={this.props.getTheTripToEdit} tripToEdit={this.props.tripToEdit}/> : null }
- 					{this.props.showEditTrip ? <EditTrip editTrip={this.editTrip} tripToEdit={this.props.tripToEdit}/> : null }
- 					{this.props.tripShow ? <TripShow tripToShow={this.props.tripToShow} flightToShow={this.props.flightToShow}/>
-	       	        	: <div className="eight columns" />}
+					<div className="eight columns">
+					{this.props.showNewTrip ?
+						<AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>
+						: <div>
+							{this.props.showTripsIndex ?
+								<TripIndex openShowTrip={this.props.openShowTrip} trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm ={this.props.renderEditTripForm} editedTripId={this.props.editedTripId} getTheTripToEdit={this.props.getTheTripToEdit} tripToEdit={this.props.tripToEdit}/>
+								: <div>
+									{this.props.showEditTrip ?
+										<EditTrip editTrip={this.editTrip} tripToEdit={this.props.tripToEdit}/>
+										: <div>
+ 											<TripShow tripToShow={this.props.tripToShow} hotelToShow={this.props.hotelToShow} flightToShow={this.props.flightToShow}/>
+ 										</div>
+ 									}
+ 								</div>
+ 							}
+ 						</div>
+ 					}
 				</div>
 			</div>
-		
+		</div>
+
+
 
 		)
 
@@ -146,5 +158,3 @@ class AllTripsContainer extends Component {
 }
 
 export default AllTripsContainer;
-
-

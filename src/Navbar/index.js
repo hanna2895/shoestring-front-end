@@ -23,7 +23,7 @@ class Navbar extends Component {
 
 
             <div className="four columns">
-                  <button className="button-primary" onClick={this.props.renderAddNewTripForm}>Create New Trip!</button>
+                  <button className="button button-primary" onClick={this.props.renderAddNewTripForm}>Create New Trip!</button>
             </div>
 
 

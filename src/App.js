@@ -16,6 +16,7 @@ class App extends Component {
       name: '',
       username: '',
       showNewTrip: false,
+      showTripsIndex: true,
       photo: '',
       openModal: false,
       userEditError: '',
@@ -190,7 +191,7 @@ class App extends Component {
       tripToShow: response.trip,
       flightToShow: response.flight
     })
-    
+
   }
 
   closeShowTrip = () => {
@@ -199,13 +200,13 @@ class App extends Component {
     })
   }
 
-  renderTripsIndex = () => {
-    console.log('this function is being called on the button');
+  navigateToIndex = (e) => {
+    console.log("button is clikkked");
     this.setState({
-      showTripsIndex:true
+      showNewTrip:false
     })
-    console.log(this.state);
-  };
+  }
+
 
 
   render(){
@@ -229,7 +230,7 @@ class App extends Component {
 
             <div className="row">
               <div className="twelve columns">
-                <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} logout={this.logout}/>
+                <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} navigateToIndex={this.navigateToIndex} logout={this.logout}/>
               </div>
             </div>
 

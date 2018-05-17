@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Nav, NavItem, NavLink, Button } from 'reactstrap';
+// import { Container, Row, Col, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import './style.css'
 
 class Navbar extends Component {
@@ -14,27 +14,25 @@ class Navbar extends Component {
 
   render(){
     return (
-        <Container>
-          <Row>
+        <div className="container">
+          <div className="row">
 
-            <Nav>
+            <div className="four columns">
+              <button className="button" onClick={this.props.navigateToIndex}>Home</button>
+            </div>
 
-            <Col>
-              <NavItem>
-                <Button onClick={this.props.renderAddNewTripForm}>Create New Trip!</Button>
-              </NavItem>
-            </Col>
 
-              <Col>
-                <NavItem>
-                  <Button onClick={this.props.logout}>Logout</Button>
-                </NavItem>
-              </Col>
+            <div className="four columns">
+                  <button className="button-primary" onClick={this.props.renderAddNewTripForm}>Create New Trip!</button>
+            </div>
 
-          </Nav>
 
-        </Row>
-      </Container>
+            <div className="four columns">
+              <button className="button" onClick={this.props.logout}>Logout</button>
+            </div>
+
+          </div>
+        </div>
     )
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './style.css'
-import { Container, Row, Col, Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
+// import { Container, Row, Col, Card, CardImg, CardText, CardBody,
+//   CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 
 const UserSidebar = (props) => {
@@ -9,26 +9,42 @@ const UserSidebar = (props) => {
 //   const user = props.user
 //   const userInfo = user((user, i) => {
     return (
-      <div>
-        <Container>
-          <Row>
-            <Col sm={{ size: 'auto', offset: 1 }}>
+    <div id="userCard">
+      <div className="container">
+        <div className="row">
+          <div className="four columns">
 
-              <Card id="userCard">
-                <CardImg top width="100%" src={props.photo} alt="photo" />
-                <CardBody>
-                  <CardTitle>{props.name}</CardTitle>
-                  <CardSubtitle>{props.username}</CardSubtitle>
-                  {/* <CardText>Etc.Etc.</CardText> */}
-                  <Button onClick={props.openModal}>Edit User</Button>
-                </CardBody>
-              </Card>
+          </div>
+        </div>
 
-            </Col>
-          </Row>
-        </Container>
+        <div className="row">
+          <div className="four columns">
+              <img id="userPhoto" src={props.photo} alt="photo" />
+            </div>
+          </div>
 
-      </div>
+          <div className="row">
+            <div className="four columns">
+              <h2 id="usersName">{props.name}</h2><br />
+            </div>
+          </div>
+
+            <div className="row">
+              <div className="four columns">
+                <h3 id="username">{props.username}</h3><br /><br />
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="four columns">
+                <button onClick={props.openModal}>Edit User</button><br /><br />
+              </div>
+            </div>
+
+        </div>
+    </div>
+
+
 
     );
   }

@@ -30,7 +30,7 @@ class LoginRegister extends Component{
 		else if (field == 'password') this.setState({ password: e.currentTarget.value })
 		else this.setState({ photo: e.currentTarget.value })
 	}
-	
+
 	handleSubmit = (e) => {
 		e.preventDefault();
 		if(this.state.registering) this.props.register(this.state.name, this.state.username, this.state.password, this.state.photo)
@@ -39,13 +39,14 @@ class LoginRegister extends Component{
 	render(){
 		return(
 			<div>
-				<p><span className={this.state.registering ? "current" : null} onClick={this.registration}>Create new user</span><br></br><span className={this.state.registering ? null : "current"} onClick={this.login}>Login</span></p>
+				<button className={this.state.registering ? "current" : null} className="button" onClick={this.registration}>Create new user</button><br />
+				<button className={this.state.registering ? null : "current"} className="button" onClick={this.login}>Login</button>
 				<form onSubmit={this.handleSubmit}>
 					<input className={this.state.registering ? null : 'hide'} type='text' name='name' placeholder='name' value={this.state.name} onChange={this.handleInput}/>
 					<input type='text' name='username' placeholder='username' value={this.state.username} onChange={this.handleInput}/>
 					<input type='password' name='password' placeholder='password' value={this.state.password} onChange={this.handleInput}/>
 					<input className={this.state.registering ? null : 'hide'} type='text' name='photo' placeholder='photo' value={this.state.photo} onChange={this.handleInput}/>
-					<button type='submit'>Submit</button>
+					<button className="button button-primary" type='submit'>Submit</button>
 				</form>
 				{this.props.loginError != '' ? <p>{this.props.loginError}</p> : null}
 			</div>

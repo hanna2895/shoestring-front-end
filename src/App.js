@@ -20,7 +20,11 @@ class App extends Component {
       showEditTrip: false,
       photo: '',
       openModal: false,
-      userEditError: ''
+      userEditError: '',
+      tripShow: false,
+      tripToShow: [],
+      flightToShow: [],
+      hotelToShow: []
     }
   }
 
@@ -143,7 +147,6 @@ class App extends Component {
   }
 
   editUser = async (name, username, password, photo, id) => {
-    console.log(id, 'dsajhsfjhbshjkbakshdjhkadsbhjdksakbjhkhbjdfashjkbfdaskbhjf')
     const user = await fetch('http://localhost:9292/user/' + id, {
       method: 'PUT',
       credentials: 'include',
@@ -177,18 +180,39 @@ class App extends Component {
       showTripsIndex: false,
       showEditTrip: false
     })
-  };
+  }
 
+  openShowTrip = async (e) => {
+    // console.log('kadsjfnlakdjsnvljasbvjlhabs dvcljhba sdjlchbalcblahjcbajlhsdbckjashcbakhjsbcaksjhcbd')
+    const id = parseInt(e.target.id)
+    const trip = await fetch('http://localhost:9292/trips/' + id, {
+      credentials: 'include'
+    })
+    const response = await trip.json()
+    this.setState({
+      tripShow: true,
+      tripToShow: response.trip,
+      flightToShow: response.flight
+    })
 
-  renderTripsIndex = () => {
-    console.log('this function is being called on the button');
+  }
+
+  closeShowTrip = () => {
     this.setState({
       showTripsIndex:true,
       showNewTrip: false,
       showEditTrip: false
+      tripShow: false
     })
-    console.log(this.state);
-  };
+  }
+
+  navigateToIndex = (e) => {
+    console.log("button is clikkked");
+    this.setState({
+      showNewTrip:false
+    })
+  }
+
 
   renderEditTripForm = () => {
     console.log('renderEditTripForm is being called');
@@ -204,19 +228,54 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.loggedIn ?
-          <div className="What-you-see-when-u-r-logged-in">
-            <h1>Shoestring!</h1>
-            <div>
-              <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} logout={this.logout}/>
+
+          <div className="container">
+            <div className="row">
+              <div className="twelve columns">
+                <h1>Shoestring!</h1>
+              </div>
             </div>
-            <div className="container thisDivContainsSideBarUserEditMaodalAndAllTripsContainer">
-              <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo} openModal={this.openModal}/>
-              <UserEditModal openModal={this.state.openModal} closeModal={this.closeModal} user_id={this.state.user_id} user_name={this.state.name} username={this.state.username} photo={this.state.photo} editUser={this.editUser} userEditError={this.state.userEditError}/>
+
+              <div className="row">
+                <div className="twelve columns">
+                  <br />
+                </div>
+              </div>
+
+
+            <div className="row">
+              <div className="twelve columns">
+                <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} navigateToIndex={this.navigateToIndex} logout={this.logout}/>
+              </div>
+            </div>
+
+
+            <div className="row">
+              <div className="twelve columns">
+                <br />
+                <br />
+                <br />
+              </div>
+
+            </div>
+
+
+            <div className="row">
+              <div className="four columns">
+                <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo} openModal={this.openModal}/>
+                <UserEditModal openModal={this.state.openModal} closeModal={this.closeModal} user_id={this.state.user_id} user_name={this.state.name} username={this.state.username} photo={this.state.photo} editUser={this.editUser} userEditError={this.state.userEditError}/>
+              </div>
+
+              <div className="eight columns">
               <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm}/>
+              </div>
             </div>
+
           </div>
+
           : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError} logout={this.logout}/>
         }
+
       </div>
     )
   }

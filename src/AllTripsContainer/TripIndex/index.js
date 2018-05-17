@@ -13,12 +13,13 @@ const TripIndex = (props) => {
 			<Row key={trip.id}>
 				<Card body key={trip.id} className="trip">
 					<div>
-					<CardTitle>{trip.title}</CardTitle> <br/>
-					<CardText>Trip Budget: {trip.budget}</CardText> <br/>
-					<CardText>Amount Saved: {trip.saved} </CardText><br />
-					<Button>More Details</Button>
-					<Button id={trip.id} onClick={props.deleteTrip}> Delete Trip </Button>
-					<Button onClick={props.renderEditTripForm}>Edit Trip </Button>
+						<CardTitle>{trip.title}</CardTitle> <br/>
+						<CardText>Trip Budget: {trip.budget}</CardText> <br/>
+						<CardText>Amount Saved: {trip.saved} </CardText><br />
+						<Button id={trip.id} onClick={props.openShowTrip}>More Details</Button>
+						<Button id={trip.id} onClick={props.deleteTrip}> Delete Trip </Button>
+						<Button onClick={props.renderEditTripForm}>Edit Trip </Button>
+
 					</div>
 					<div>
 						<p>Data viz will go here</p>
@@ -27,7 +28,6 @@ const TripIndex = (props) => {
 			</Row>
 		)
 	})
-
 	return (
 		<div className="trip-cards">
 			<h1>My Trips</h1>

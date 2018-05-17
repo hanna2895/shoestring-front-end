@@ -7,7 +7,6 @@ import "../style.css";
 
 const TripIndex = (props) => {
 	const trips = props.trips;
-	console.log(props.renderEditTripForm);
 	const tripList = trips.map((trip, i) => {
 		return (
 			<Row key={trip.id}>

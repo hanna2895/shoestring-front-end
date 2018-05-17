@@ -201,7 +201,7 @@ class App extends Component {
     this.setState({
       showTripsIndex:true,
       showNewTrip: false,
-      showEditTrip: false
+      showEditTrip: false,
       tripShow: false
     })
   }
@@ -210,7 +210,9 @@ class App extends Component {
     console.log("button is clikkked");
     this.setState({
       showNewTrip:false,
-      tripShow: false
+      tripShow: false,
+      showEditTrip: false,
+      showTripsIndex: true
     })
   }
 

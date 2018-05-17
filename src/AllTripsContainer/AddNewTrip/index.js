@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import AllTripsContainer from '../../AllTripsContainer'
-// import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-
+// import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';s
 import '../style.css';
-
-
 
 class AddNewTrip extends Component {
 	constructor() {
@@ -42,18 +39,21 @@ class AddNewTrip extends Component {
 		this.state.checkOutDate)
 	}
 
-	navigateToIndex = (e) => {
-		console.log("button is clikkked");
-		this.setState({
 
-		})
-	}
+	// renderTripsIndex = () => {
+	// 	console.log('this function is being called on the button');
+	// 	this.setState({
+	// 		showTripsIndex:true
+	// 	})
+	// 	console.log(this.state);
+	// };
 
 	render() {
 		return (
 					<div className="container">
 						<div className="row">
 							<div className="eight columns">
+								{/* <button onClick={this.navigateToIndex}>Back to Trips</button> */}
 								<form>
 										<h2>Create a New Trip</h2><br />
 											<label> Trip Title </label><br />
@@ -88,9 +88,6 @@ class AddNewTrip extends Component {
 
 											<label>Check Out Date</label><br />
 											<input type="text" name="checkOutDate" value={this.state.checkOutDate} onChange={this.handleInput} /><br />
-
-											{/* <Label>Number of Rooms</Label>
-											<Input type="text" name="numOfRooms" value={this.state.numOfRooms} onChange={this.handleInput} /><br /> */}
 
 											<button type="submit" onClick={this.handleSubmit}>Add Trip </button>
 

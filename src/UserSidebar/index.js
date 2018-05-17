@@ -9,6 +9,7 @@ const UserSidebar = (props) => {
 //   const user = props.user
 //   const userInfo = user((user, i) => {
     return (
+    <div id="userCard">
       <div className="container">
         <div className="row">
           <div className="four columns">
@@ -41,6 +42,8 @@ const UserSidebar = (props) => {
             </div>
 
         </div>
+    </div>
+
 
 
     );

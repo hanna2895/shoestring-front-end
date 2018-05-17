@@ -16,6 +16,8 @@ class App extends Component {
       name: '',
       username: '',
       showNewTrip: false,
+      showTripsIndex: true,
+      showEditTrip: false,
       photo: '',
       openModal: false,
       userEditError: '',
@@ -172,9 +174,11 @@ class App extends Component {
   }
 
   renderAddNewTripForm = () => {
-    console.log('this function is being called on the button');
+    console.log('this add new trip function is being called on the button');
     this.setState({
-      showNewTrip:true
+      showNewTrip: true,
+      showTripsIndex: false,
+      showEditTrip: false
     })
   }
 
@@ -189,23 +193,34 @@ class App extends Component {
       tripToShow: response.trip,
       flightToShow: response.flight
     })
-    
+
   }
 
   closeShowTrip = () => {
     this.setState({
+      showTripsIndex:true,
+      showNewTrip: false,
+      showEditTrip: false
       tripShow: false
     })
   }
 
-  renderTripsIndex = () => {
-    console.log('this function is being called on the button');
+  navigateToIndex = (e) => {
+    console.log("button is clikkked");
     this.setState({
-      showTripsIndex:true
+      showNewTrip:false,
+      tripShow: false
     })
-    console.log(this.state);
-  };
+  }
 
+  renderEditTripForm = () => {
+    console.log('renderEditTripForm is being called');
+    this.setState({
+      showEditTrip: true,
+      showNewTrip: false,
+      showTripsIndex: false
+    })
+  }
 
   render(){
     return (
@@ -225,20 +240,19 @@ class App extends Component {
                 </div>
               </div>
 
-
             <div className="row">
               <div className="twelve columns">
-                <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} logout={this.logout}/>
+                <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} navigateToIndex={this.navigateToIndex} logout={this.logout}/>
               </div>
             </div>
 
-
             <div className="row">
               <div className="twelve columns">
                 <br />
                 <br />
                 <br />
               </div>
+
             </div>
 
 
@@ -249,7 +263,7 @@ class App extends Component {
               </div>
 
               <div className="eight columns">
-                <AllTripsContainer showNewTrip={this.state.showNewTrip} tripShow={this.state.tripShow} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} flightToShow={this.state.flightToShow}/>
+              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm}/>
               </div>
             </div>
 

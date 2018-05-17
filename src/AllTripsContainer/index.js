@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import "./style.css"
 import TripIndex from './TripIndex'
 import AddNewTrip from './AddNewTrip'
+import EditTrip from './EditTrip'
 import TripShow from './TripShow'
+
 
 class AllTripsContainer extends Component {
 	constructor() {
@@ -37,7 +39,6 @@ class AllTripsContainer extends Component {
 
 	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate) => {
 		console.log(title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate)
-		console.log('==================================================================')
 		const trips = await fetch('http://localhost:9292/trips', {
 			method: "POST",
 			credentials: 'include',
@@ -60,8 +61,29 @@ class AllTripsContainer extends Component {
 
 		const tripParsed = await trips.json();
 		console.log(tripParsed, 'this is trip parsed');
+
 		return (tripParsed);
 	}
+
+
+	deleteTrip = async (e) => {
+		e.preventDefault();
+		const id = e.currentTarget.id; // this may have to change based on samat's stuff
+		console.log(id);
+		const trip = await fetch('http://localhost:9292/trips/' + id, {
+			method: "DELETE",
+			credentials: 'include'
+		})
+
+		// const response = await trip.json();
+
+		this.setState({
+			trips: this.state.trips.filter((trip) => {
+				return trip.id != id
+			})
+		})
+	}
+
 	// openShowTrip = () => {
 	// 	console.log('this is renderShowTrip called from TripIndex')
 	// 	this.setState({
@@ -75,7 +97,18 @@ class AllTripsContainer extends Component {
 	// }
 
 	render() {
+
+		console.log(this.state, 'this is state');
+		// const isHidden = this.props.showTripsIndex ? null : hideDiv; 
+
 		return(
+			<div className="AllTripsDiv">
+				{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/> : null} 
+				
+				{this.props.showTripsIndex ? <TripIndex trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm ={this.props.renderEditTripForm} /> : null }
+ 				{this.props.showEditTrip ? <EditTrip /> : null }
+			</div>
+
 			<div className="container">
 				<div className="row">
 					{this.props.tripShow ?

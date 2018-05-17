@@ -71,7 +71,7 @@ class AllTripsContainer extends Component {
 				<div className="row">
 					<div className="eight columns">
 
-						{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips}/>}
+						{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex navigateToIndex={this.navigateToIndex} trips={this.state.trips}/>}
 
 					</div>
 				</div>

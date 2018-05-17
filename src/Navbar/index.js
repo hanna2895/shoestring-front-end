@@ -17,12 +17,18 @@ class Navbar extends Component {
         <div className="container">
           <div className="row">
 
-            <div className="six columns">
+            <div className="four columns">
+              <button className="button" onClick={this.props.navigateToIndex}>Home</button>
+            </div>
+
+
+            <div className="four columns">
                   <button className="button-primary" onClick={this.props.renderAddNewTripForm}>Create New Trip!</button>
             </div>
 
-            <div className="six columns">
-              <button className="button-primary" onClick={this.props.logout}>Logout</button>
+
+            <div className="four columns">
+              <button className="button" onClick={this.props.logout}>Logout</button>
             </div>
 
           </div>

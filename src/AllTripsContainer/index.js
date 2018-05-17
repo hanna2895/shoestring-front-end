@@ -30,31 +30,14 @@ class AllTripsContainer extends Component {
 		const tripsJson = await fetch('http://localhost:9292/trips', {
 			credentials: 'include'
 		});
+
 		const trips = await tripsJson.json();
 		return trips;
 	}
 
-	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers) => {
-
-
-
-		// const flight = await fetch('http://localhost:9292/flights', {
-		// 	method: "POST",
-		// 	credentials: 'include',
-		// 	body: JSON.stringify({
-		// 		origin: origin,
-		// 		destination: destination,
-		// 		departureDate: departureDate,
-		// 		returnDate: returnDate,
-		// 		numOfPassengers: numOfPassengers
-		// 	})
-		// })
-
-		// const flightParsed = await flight.json();
-		// console.log(flightParsed, 'this is flight parsed');
-
-		// console.log(flightParsed.added_flight.id);
-
+	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate) => {
+		console.log(title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate)
+		console.log('==================================================================')
 		const trips = await fetch('http://localhost:9292/trips', {
 			method: "POST",
 			credentials: 'include',
@@ -66,19 +49,18 @@ class AllTripsContainer extends Component {
 				destination: destination,
 				departureDate: departureDate,
 				returnDate: returnDate,
-				numOfPassengers: numOfPassengers
+				numOfPassengers: numOfPassengers,
+				locationCode: locationCode,
+				// address: address,
+				checkInDate: checkInDate,
+				checkOutDate: checkOutDate
+
 			})
 		});
 
 		const tripParsed = await trips.json();
 		console.log(tripParsed, 'this is trip parsed');
 		return (tripParsed);
-	}
-
-	getTripById = async () => {
-		// const trip = await fetch('http://localhost:9292/trips' + id, {
-		// 	credentials: 'include'
-		// })
 	}
 	// openShowTrip = () => {
 	// 	console.log('this is renderShowTrip called from TripIndex')
@@ -92,16 +74,18 @@ class AllTripsContainer extends Component {
 	// 	})
 	// }
 
-
 	render() {
 		return(
-			<div>
-				{this.props.tripShow ?
-	                <TripShow tripToShow={this.props.tripToShow} flightToShow={this.props.flightToShow}/>
-	                : <div>
-						{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips} openShowTrip={this.props.openShowTrip}/>}
-					</div>
-				}
+			<div className="container">
+				<div className="row">
+					{this.props.tripShow ?
+	                	<TripShow tripToShow={this.props.tripToShow} flightToShow={this.props.flightToShow}/>
+	                	: <div className="eight columns">
+
+							{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips} openShowTrip={this.props.openShowTrip}/>}
+						</div>
+					}
+				</div>
 			</div>
 
 		)

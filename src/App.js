@@ -179,7 +179,6 @@ class App extends Component {
   }
 
   openShowTrip = async (e) => {
-    // console.log('kadsjfnlakdjsnvljasbvjlhabs dvcljhba sdjlchbalcblahjcbajlhsdbckjashcbakhjsbcaksjhcbd')
     const id = parseInt(e.target.id)
     const trip = await fetch('http://localhost:9292/trips/' + id, {
       credentials: 'include'

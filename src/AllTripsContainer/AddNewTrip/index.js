@@ -42,9 +42,8 @@ class AddNewTrip extends Component {
 			<div className="container">
 				<div className="row">
 					<div className="eight columns">
-								
-						<form>
-							<h2>Create a New Trip</h2><br />
+						<h2>Create a New Trip</h2><br />
+						<form  onSubmit={this.handleSubmit}>
 							<label> Trip Title </label><br />
 							<input type="text" name="title" value={this.state.title} onChange={this.handleInput} /> <br />
 
@@ -78,7 +77,7 @@ class AddNewTrip extends Component {
 							<label>Check Out Date</label><br />
 							<input type="text" name="checkOutDate" value={this.state.checkOutDate} onChange={this.handleInput} /><br />
 
-							<button type="submit" onClick={this.handleSubmit}>Add Trip </button>
+							<button type="submit">Add Trip </button>
 
 						</form>
 					</div>

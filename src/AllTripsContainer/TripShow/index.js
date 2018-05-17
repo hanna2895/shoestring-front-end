@@ -8,6 +8,7 @@ class TripShow extends Component{
 				<p>{this.props.tripToShow.budget}</p>
 				<p>{this.props.tripToShow.total}</p>
 				<p>{this.props.tripToShow.saved}</p>
+
 				<h2>Flight Information</h2>
 				<p>{this.props.flightToShow.origin}</p>
 				<p>{this.props.flightToShow.destination}</p>
@@ -17,16 +18,19 @@ class TripShow extends Component{
 				<p>{this.props.flightToShow.flight_num}</p>
 				<p>{this.props.flightToShow.num_of_adults}</p>
 				<p>{this.props.flightToShow.fare}</p>
+
 				<h2>Hotel Information</h2>
-				
+				<p>{this.props.hotelToShow.location_code}</p>
+				<p>{this.props.hotelToShow.address}</p>
+				<p>{this.props.hotelToShow.check_in}</p>
+				<p>{this.props.hotelToShow.check_out}</p>
+				<p>{this.props.hotelToShow.booking_code}</p>
+				<p>{this.props.hotelToShow.total_price}</p>
+
 			</div>
 		)
 	}
 }
-// <p>{this.state.location}</p>
-// 				<p>{this.state.check_in}</p>
-// 				<p>{this.state.check_out}</p>
-// 				<p>{this.state.num_of_rooms}</p>
-// 				<p>{this.state.price}</p>
+
 
 export default TripShow;

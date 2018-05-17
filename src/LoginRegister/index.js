@@ -39,7 +39,8 @@ class LoginRegister extends Component{
 	render(){
 		return(
 			<div>
-				<button className={this.state.registering ? "current" : null} className="button" onClick={this.registration}>Create new user</button><br />
+				<h1 className="header">Shoestring!</h1>
+				<button className={this.state.registering ? "current" : null} className="button" onClick={this.registration}>Create new user</button>
 				<button className={this.state.registering ? null : "current"} className="button" onClick={this.login}>Login</button>
 				<form onSubmit={this.handleSubmit}>
 					<input className={this.state.registering ? null : 'hide'} type='text' name='name' placeholder='name' value={this.state.name} onChange={this.handleInput}/>

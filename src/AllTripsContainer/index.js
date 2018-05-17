@@ -11,7 +11,8 @@ class AllTripsContainer extends Component {
 		super();
 		this.state ={
 			trips: [],
-			addedTrip: ""
+			addedTrip: "",
+			tripToEdit: '',
 			// showNewTrip: false
 		}
 	}
@@ -65,6 +66,33 @@ class AllTripsContainer extends Component {
 		return (tripParsed);
 	}
 
+	editTrip = async(title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate) => {
+		const id = this.props.editedTripId;
+		const trip = await fetch('http://localhost:9292/trips/' + id, {
+			method: "PUT",
+			credentials: 'include',
+			body: JSON.stringify({
+				title: title,
+				budget: budget,
+				amountSaved: amountSaved,
+				origin: origin,
+				destination: destination,
+				departureDate: departureDate,
+				returnDate: returnDate,
+				numOfPassengers: numOfPassengers,
+				locationCode: locationCode,
+				// address: address,
+				checkInDate: checkInDate,
+				checkOutDate: checkOutDate
+			})
+		})
+
+		const response = await trip.json();
+		console.log(response);
+
+		return response;
+	}
+
 
 	deleteTrip = async (e) => {
 		e.preventDefault();
@@ -97,6 +125,7 @@ class AllTripsContainer extends Component {
 	// }
 
 	render() {
+<<<<<<< HEAD
 			return(
 					<div className="container">
 						<div className="row">
@@ -113,6 +142,28 @@ class AllTripsContainer extends Component {
 				</div>
 			)
 		}
+=======
+		console.log(this.state, 'this is state');
+		return(
+			<div className="container">
+				<div className="row">
+					{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/> : null} 
+				
+					{this.props.showTripsIndex ? <TripIndex trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm={this.props.renderEditTripForm} editedTripId={this.props.editedTripId} getTheTripToEdit={this.props.getTheTripToEdit} tripToEdit={this.props.tripToEdit}/> : null }
+ 					{this.props.showEditTrip ? <EditTrip editTrip={this.editTrip} tripToEdit={this.props.tripToEdit}/> : null }
+ 					{this.props.tripShow ? <TripShow tripToShow={this.props.tripToShow} flightToShow={this.props.flightToShow}/>
+	       	        	: <div className="eight columns" />}
+				</div>
+			</div>
+		
+
+		)
+
+	}
+
+>>>>>>> 02dfd869c6df1e48e39d4fe1cb3541f119bca465
 }
 
 export default AllTripsContainer;
+
+

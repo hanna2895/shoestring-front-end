@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./style.css"
 import TripIndex from './TripIndex'
 import AddNewTrip from './AddNewTrip'
+import EditTrip from './EditTrip'
 
 class AllTripsContainer extends Component {
 	constructor() {
@@ -67,11 +68,11 @@ class AllTripsContainer extends Component {
 			credentials: 'include'
 		})
 
-		const response = await trip.json();
+		// const response = await trip.json();
 
 		this.setState({
 			trips: this.state.trips.filter((trip) => {
-				trip.id != id
+				return trip.id != id
 			})
 		})
 	}
@@ -80,9 +81,13 @@ class AllTripsContainer extends Component {
 
 	render() {
 		console.log(this.state, 'this is state');
+		// const isHidden = this.props.showTripsIndex ? null : hideDiv; 
 		return(
-			<div>
-				{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/>: <TripIndex trips={this.state.trips} deleteTrip={this.deleteTrip}/>}
+			<div className="AllTripsDiv">
+				{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/> : null} 
+				
+				{this.props.showTripsIndex ? <TripIndex trips={this.state.trips} deleteTrip={this.deleteTrip} renderEditTripForm ={this.props.renderEditTripForm} /> : null }
+ 				{this.props.showEditTrip ? <EditTrip /> : null }
 			</div>
 
 		)
@@ -92,3 +97,5 @@ class AllTripsContainer extends Component {
 }
 
 export default AllTripsContainer;
+
+// {this.props.showTripsIndex === true ? <TripIndex  : <TripIndex style={hidden}/>}

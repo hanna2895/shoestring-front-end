@@ -16,6 +16,8 @@ class App extends Component {
       name: '',
       username: '',
       showNewTrip: false,
+      showTripsIndex: true,
+      showEditTrip: false,
       photo: '',
       openModal: false,
       userEditError: ''
@@ -169,9 +171,11 @@ class App extends Component {
   }
 
   renderAddNewTripForm = () => {
-    console.log('this function is being called on the button');
+    console.log('this add new trip function is being called on the button');
     this.setState({
-      showNewTrip:true
+      showNewTrip: true,
+      showTripsIndex: false,
+      showEditTrip: false
     })
   };
 
@@ -179,25 +183,36 @@ class App extends Component {
   renderTripsIndex = () => {
     console.log('this function is being called on the button');
     this.setState({
-      showTripsIndex:true
+      showTripsIndex:true,
+      showNewTrip: false,
+      showEditTrip: false
     })
     console.log(this.state);
   };
+
+  renderEditTripForm = () => {
+    console.log('renderEditTripForm is being called');
+    this.setState({
+      showEditTrip: true,
+      showNewTrip: false,
+      showTripsIndex: false
+    })
+  }
 
 
   render(){
     return (
       <div className="App">
         {this.state.loggedIn ?
-          <div>
+          <div className="What-you-see-when-u-r-logged-in">
             <h1>Shoestring!</h1>
             <div>
               <Navbar renderAddNewTripForm={this.renderAddNewTripForm} showNewTrip={this.state.showNewTrip} logout={this.logout}/>
             </div>
-            <div className="container">
+            <div className="container thisDivContainsSideBarUserEditMaodalAndAllTripsContainer">
               <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo} openModal={this.openModal}/>
               <UserEditModal openModal={this.state.openModal} closeModal={this.closeModal} user_id={this.state.user_id} user_name={this.state.name} username={this.state.username} photo={this.state.photo} editUser={this.editUser} userEditError={this.state.userEditError}/>
-              <AllTripsContainer showNewTrip={this.state.showNewTrip}/>
+              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm}/>
             </div>
           </div>
           : <LoginRegister login={this.login} register={this.register} loginError={this.state.loginError} logout={this.logout}/>

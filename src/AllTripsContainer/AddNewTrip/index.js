@@ -75,10 +75,10 @@ class AddNewTrip extends Component {
 								<Input type="text" name="numOfPassengers" value={this.state.numOfPassengers} onChange={this.handleInput} /><br />
 
 								<Label>Check In Date</Label>
-								<Input type="text" name="checkInDate" value={this.state.checkInDate} onChange={this.handleInput} /><br />
+								<Input type="date" name="checkInDate" value={this.state.checkInDate} onChange={this.handleInput} /><br />
 
 								<Label>Check Out Date</Label>
-								<Input type="text" name="checkOutDate" value={this.state.checkOutDate} onChange={this.handleInput} /><br />
+								<Input type="date" name="checkOutDate" value={this.state.checkOutDate} onChange={this.handleInput} /><br />
 
 								<Label>Number of Rooms</Label>
 								<Input type="text" name="numOfRooms" value={this.state.numOfRooms} onChange={this.handleInput} /><br />

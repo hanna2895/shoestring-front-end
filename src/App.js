@@ -42,7 +42,9 @@ class App extends Component {
     const loginResponse = await userLogin.json()
     if(loginResponse.success){
       this.setState({
-        loggedIn: true
+        loggedIn: true,
+        tripShow: false,
+        showNewTrip: false
       })
       this.showUserSidebar()
       .then((user) => {
@@ -77,10 +79,9 @@ class App extends Component {
     const registrationResponse = await userRegister.json();
     if(registrationResponse.success){
       this.setState({
-        loggedIn: true
-      })
-      this.setState({
-        loggedIn: true
+        loggedIn: true,
+        tripShow: false,
+        showNewTrip: false
       })
       this.showUserSidebar()
       .then((user) => {
@@ -185,7 +186,6 @@ class App extends Component {
   }
 
   openShowTrip = async (e) => {
-    // console.log('kadsjfnlakdjsnvljasbvjlhabs dvcljhba sdjlchbalcblahjcbajlhsdbckjashcbakhjsbcaksjhcbd')
     const id = parseInt(e.target.id)
     const trip = await fetch('http://localhost:9292/trips/' + id, {
       credentials: 'include'

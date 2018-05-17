@@ -127,9 +127,7 @@ class AllTripsContainer extends Component {
 	render() {
 		console.log(this.state, 'this is state');
 		return(
-		
-	
-				<div className="container">
+			<div className="container">
 				<div className="row">
 					{this.props.showNewTrip ? <AddNewTrip addedTrip={this.state.addedTrip} createTrip={this.createTrip}/> : null} 
 				

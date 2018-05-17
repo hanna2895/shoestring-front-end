@@ -5,11 +5,6 @@ import "../style.css";
 
 const TripIndex = (props) => {
 	const trips = props.trips;
-	// const startEdit = () => {
-	// 	this.props.getTheTripToEdit
-	// 	this.props.renderEditTripForm
-	// }
-	console.log(props, 'this is props in trip index');
 	const tripList = trips.map((trip, i) => {
 		return (
 
@@ -19,7 +14,11 @@ const TripIndex = (props) => {
 						<CardTitle>{trip.title}</CardTitle> <br/>
 						<CardText>Trip Budget: {trip.budget}</CardText> <br/>
 						<CardText>Amount Saved: {trip.saved} </CardText><br />
-						<button className="button button-primary" id={trip.id} onClick={props.openShowTrip}>More Details</button>
+						<button className="button button-primary" id={trip.id} onClick={props.openShowTrip}>More Details</button><br />
+						<button className="button button-primary" onClick={props.renderEditTripForm}>Edit Trip </button><br /><br />
+						<button className="button button-primary" onClick={props.deleteTrip}> Delete Trip </button><br />
+
+
 					</div>
 					<div>
 						<p>Data viz will go here</p>

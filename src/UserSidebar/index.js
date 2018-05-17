@@ -5,7 +5,7 @@ import './style.css'
 
 
 const UserSidebar = (props) => {
-  console.log(props);
+  // console.log(props);
 //   const user = props.user
 //   const userInfo = user((user, i) => {
     return (

@@ -218,7 +218,7 @@ class App extends Component {
             </div>
             <div className="container">
               <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo} openModal={this.openModal}/>
-              <UserEditModal modalState={this.state.openModal} user_id={this.state.user_id} user_name={this.state.name} username={this.state.username} photo={this.state.photo} editUser={this.editUser} userEditError={this.state.userEditError}/>
+              <UserEditModal openModal={this.state.openModal} user_id={this.state.user_id} user_name={this.state.name} username={this.state.username} photo={this.state.photo} editUser={this.editUser} userEditError={this.state.userEditError}/>
               <AllTripsContainer showNewTrip={this.state.showNewTrip} tripShow={this.state.tripShow} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} flightToShow={this.state.flightToShow}/>
             </div>
           </div>

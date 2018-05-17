@@ -1,7 +1,12 @@
 import React, {Component} from 'react'
 
 class TripShow extends Component{
+	total = () => {
+		console.log(this.props.hotelToShow, 'this is hotelToShow')
+		const total = this.props.hotelToShow.price + this.props.flightToShow.fare
+	}
 	render(){
+		console.log(this.props.hotelToShow, 'this is hotelToShow')
 		return(
 			<div>
 				<h1>{this.props.tripToShow.title}</h1>
@@ -18,15 +23,12 @@ class TripShow extends Component{
 				<p>{this.props.flightToShow.num_of_adults}</p>
 				<p>{this.props.flightToShow.fare}</p>
 				<h2>Hotel Information</h2>
-				
+				<p>{this.props.hotelToShow.location_code}</p>
+				<p>{this.props.hotelToShow.check_in}</p>
+ 				<p>{this.props.hotelToShow.check_out}</p>
+ 				<p>{this.props.hotelToShow.price}</p>
 			</div>
 		)
 	}
 }
-// <p>{this.state.location}</p>
-// 				<p>{this.state.check_in}</p>
-// 				<p>{this.state.check_out}</p>
-// 				<p>{this.state.num_of_rooms}</p>
-// 				<p>{this.state.price}</p>
-
 export default TripShow;

@@ -32,7 +32,7 @@ class UserEditModal extends Component{
 	}
 
 	render(){
-		console.log(this.state, 'This is edit modal staaaaaaaaate')
+		// console.log(this.state, 'This is edit modal staaaaaaaaate')
 		// const modelCSS = this.props.modelState ? 'Edit-Modal-Open' : 'Edit-Modal-Closed'
 		return(
 			<Container>

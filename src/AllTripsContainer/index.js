@@ -64,6 +64,15 @@ class AllTripsContainer extends Component {
 
 		console.log(tripParsed);
 		this.props.closeShowTrip()
+		this.getTripsByUser()
+			.then((trips) => {
+				// console.log(trips, "this is trips in componentDidMount");
+				this.setState({trips: trips.trip})
+			})
+			.catch((err) => {
+				console.log(err);
+			})
+
 	}
 
 	editTrip = async(title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate) => {

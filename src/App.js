@@ -193,7 +193,7 @@ class App extends Component {
     })
     const response = await trip.json()
     this.setState({
-      
+
       showNewTrip: false,
       showTripsIndex: false,
       showEditTrip: false,
@@ -242,7 +242,7 @@ class App extends Component {
   }
 
   renderEditTripForm = async (e) => {
-    const id = e.currentTarget.previousSibling.id;
+    const id = e.currentTarget.previousSibling.previousSibling.id;
 
     const tripJson = await fetch('http://localhost:9292/trips/' + id, {
       credentials: 'include'
@@ -299,7 +299,7 @@ class App extends Component {
               </div>
 
               <div className="eight columns">
-              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} ditedTripId={this.state.editedTripId} tripToEdit={this.state.tripToEdit} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} hotelToShow={this.state.hotelToShow} flightToShow={this.state.flightToShow} getTheTripToEdit={this.getTheTripToEdit}/>
+              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} editedTripId={this.state.editedTripId} tripToEdit={this.state.tripToEdit} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} hotelToShow={this.state.hotelToShow} flightToShow={this.state.flightToShow} getTheTripToEdit={this.getTheTripToEdit}/>
               </div>
             </div>
 

@@ -28,7 +28,7 @@ class AllTripsContainer extends Component {
 
 	getTripsByUser = async () => {
 
-		const tripsJson = await fetch('http://localhost:9292/trips', {
+		const tripsJson = await fetch('https://salty-island-34690.herokuapp.com/trips', {
 			credentials: 'include'
 		});
 
@@ -39,7 +39,7 @@ class AllTripsContainer extends Component {
 	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate) => {
 
 		this.props.loaderOn()
-		const trips = await fetch('http://localhost:9292/trips', {
+		const trips = await fetch('https://salty-island-34690.herokuapp.com/trips', {
 			method: "POST",
 			credentials: 'include',
 			body: JSON.stringify({
@@ -77,7 +77,7 @@ class AllTripsContainer extends Component {
 	editTrip = async(title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate) => {
 		const id = this.props.editedTripId;
 		this.props.loaderOn()
-		const trip = await fetch('http://localhost:9292/trips/' + id, {
+		const trip = await fetch('https://salty-island-34690.herokuapp.com/trips/' + id, {
 			method: "PUT",
 			credentials: 'include',
 			body: JSON.stringify({
@@ -115,7 +115,7 @@ class AllTripsContainer extends Component {
 	deleteTrip = async (e) => {
 		e.preventDefault();
 		const id = parseInt(e.target.parentNode.id) 
-		const trip = await fetch('http://localhost:9292/trips/' + id, {
+		const trip = await fetch('https://salty-island-34690.herokuapp.com/trips/' + id, {
 			method: "DELETE",
 			credentials: 'include'
 		})

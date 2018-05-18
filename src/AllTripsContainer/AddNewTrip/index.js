@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-// import AllTripsContainer from '../../AllTripsContainer'
+import Tooltips from '../Tooltips'
+import { Card } from 'reactstrap'
 import '../style.css';
 
 class AddNewTrip extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			title: "",
 			origin: "",
@@ -28,7 +29,6 @@ class AddNewTrip extends Component {
 		this.setState({
 			[name]: value
 		})
-
 	}
 
 	handleSubmit = (e) => {
@@ -37,53 +37,58 @@ class AddNewTrip extends Component {
 		this.state.checkOutDate)
 	}
 
+
 	render() {
 		return (
-			<div className="container">
-				<div className="row">
-					<div className="eight columns">
-						<h2>Create a New Trip</h2><br />
-						<form  onSubmit={this.handleSubmit}>
-							<label> Trip Title </label><br />
-							<input type="text" name="title" value={this.state.title} onChange={this.handleInput} /> <br />
 
-							<label> Origin </label><br />
-							<input type="text" name="origin" value={this.state.origin} onChange={this.handleInput} /><br />
+				<div className="container">
+					<div className="row">
+						<div className="eight columns">
+							<Card>
+							<h2>Create a New Trip</h2><br />
+							<form onSubmit={this.handleSubmit}>
+								<label> Trip Title </label><br />
+								<input type="text" name="title" value={this.state.title} onChange={this.handleInput} /> <br />
+								<Tooltips />
+								<label> Origin </label><br />
+								<input type="text" name="origin" value={this.state.origin} onChange={this.handleInput} /><br />
 
-							<label> Destination </label><br />
-							<input type="text" name="destination" value={this.state.destination} onChange={this.handleInput}/><br />
+								<label> Destination </label><br />
+								<input type="text" name="destination" value={this.state.destination} onChange={this.handleInput}/><br />
 
-							<label>Budget</label><br />
-							$<input type="text" name="budget" value={this.state.budget} onChange={this.handleInput} /><br />
+								<label>Budget</label><br />
+								$<input type="text" name="budget" value={this.state.budget} onChange={this.handleInput} /><br />
 
-							<label>Amount Saved</label><br />
-							$<input type="text" name="amountSaved" value={this.state.amountSaved} onChange={this.handleInput} /><br />
+								<label>Amount Saved</label><br />
+								$<input type="text" name="amountSaved" value={this.state.amountSaved} onChange={this.handleInput} /><br />
 
-							<label>Departure Date</label><br />
-							<input type="text" name="departureDate" value={this.state.departureDate} onChange={this.handleInput} /><br />
+								<label>Departure Date</label><br />
+								<input type="text" name="departureDate" value={this.state.departureDate} onChange={this.handleInput} /><br />
 
-							<label>Return Date</label><br />
-							<input type="text" name="returnDate" value={this.state.returnDate} onChange={this.handleInput} /><br />
+								<label>Return Date</label><br />
+								<input type="text" name="returnDate" value={this.state.returnDate} onChange={this.handleInput} /><br />
 
-							<label>Number of Passengers</label><br />
-							<input type="text" name="numOfPassengers" value={this.state.numOfPassengers} onChange={this.handleInput} /><br />
+								<label>Number of Passengers</label><br />
+								<input type="text" name="numOfPassengers" value={this.state.numOfPassengers} onChange={this.handleInput} /><br />
 
-							<label>Hotel Location **Use Airport Code**</label><br />
-							<input type="text" name="locationCode" value={this.state.locationCode} onChange={this.handleInput} /><br />
+								<Tooltips />
 
-							<label>Check In Date</label><br />
-							<input type="text" name="checkInDate" value={this.state.checkInDate} onChange={this.handleInput} /><br />
+								<label>Hotel Location</label><br />
+								<input type="text" name="locationCode" value={this.state.locationCode} onChange={this.handleInput} /><br />
 
-							<label>Check Out Date</label><br />
-							<input type="text" name="checkOutDate" value={this.state.checkOutDate} onChange={this.handleInput} /><br />
+								<label>Check In Date</label><br />
+								<input type="text" name="checkInDate" value={this.state.checkInDate} onChange={this.handleInput} /><br />
 
-							<button type="submit">Add Trip </button>
+								<label>Check Out Date</label><br />
+								<input type="text" name="checkOutDate" value={this.state.checkOutDate} onChange={this.handleInput} /><br />
 
-						</form>
+								<button type="submit" className= "button button-primary">Add Trip </button>
+
+							</form>
+						</Card>
+						</div>
 					</div>
 				</div>
-			</div>
-
 
 		)
 	}

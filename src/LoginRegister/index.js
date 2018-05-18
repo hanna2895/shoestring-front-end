@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import logo from '../logo.png'
 import './style.css'
 
 class LoginRegister extends Component{
@@ -39,14 +40,14 @@ class LoginRegister extends Component{
 	render(){
 		return(
 			<div>
-				<h1 className="header">Shoestring!</h1>
+				<img src={logo} alt={"logo"}/><br />
 				<button className={this.state.registering ? "current" : null} className="button" onClick={this.registration}>Create new user</button>
 				<button className={this.state.registering ? null : "current"} className="button" onClick={this.login}>Login</button>
 				<form onSubmit={this.handleSubmit}>
-					<input className={this.state.registering ? null : 'hide'} type='text' name='name' placeholder='name' value={this.state.name} onChange={this.handleInput}/>
-					<input type='text' name='username' placeholder='username' value={this.state.username} onChange={this.handleInput}/>
-					<input type='password' name='password' placeholder='password' value={this.state.password} onChange={this.handleInput}/>
-					<input className={this.state.registering ? null : 'hide'} type='text' name='photo' placeholder='photo' value={this.state.photo} onChange={this.handleInput}/>
+					<input className={this.state.registering ? null : 'hide'} type='text' name='name' placeholder='name' value={this.state.name} onChange={this.handleInput}/><br />
+					<input type='text' name='username' placeholder='username' value={this.state.username} onChange={this.handleInput}/><br />
+					<input type='password' name='password' placeholder='password' value={this.state.password} onChange={this.handleInput}/><br />
+					<input className={this.state.registering ? null : 'hide'} type='text' name='photo' placeholder='photo' value={this.state.photo} onChange={this.handleInput}/><br />
 					<button className="button button-primary" type='submit'>Submit</button>
 				</form>
 				{this.props.loginError != '' ? <p>{this.props.loginError}</p> : null}

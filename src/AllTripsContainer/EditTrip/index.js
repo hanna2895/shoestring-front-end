@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Card } from 'reactstrap'
+import Tooltips from '../Tooltips'
 import "../style.css"
 
 class EditTrip extends Component {
@@ -40,11 +42,7 @@ class EditTrip extends Component {
 			numOfPassengers: this.props.tripToEdit.flight.num_of_adults,
 			locationCode: this.props.tripToEdit.hotel.location_code,
 			checkInDate: this.props.tripToEdit.hotel.check_in,
-<<<<<<< HEAD
 			checkOutDate: this.props.tripToEdit.hotel.check_out,
-=======
-			checkOutDate: this.props.tripToEdit.hotel.check_out
->>>>>>> zoe
 		})
 	}
 
@@ -62,10 +60,13 @@ class EditTrip extends Component {
 			<div className="container">
 				<div className="row">
 					<div className="eight columns">
+						<Card>
 						<form>
 							<h1>Edit Trip</h1>
 							<label> Trip Title </label><br />
 							<input type="text" name="title" value={this.state.title} onChange={this.handleInput} /><br />
+
+							<Tooltips />
 
 							<label>Origin </label><br/>
 							<input type="text" name="origin" value={this.state.origin} onChange={this.handleInput} /> <br />
@@ -88,7 +89,8 @@ class EditTrip extends Component {
 							<label>Number of Passengers</label><br/>
 							<input type="text" name="numOfPassengers" value={this.state.numOfPassengers} onChange={this.handleInput} /> <br />
 
-							<label>Hotel Location ** Use Airport Code**</label><br/>
+							<Tooltips />
+							<label>Hotel Location</label><br/>
 							<input type="text" name="locationCode" value={this.state.locationCode} onChange={this.handleInput} /> <br />
 
 							<label>Check In Date </label><br/>
@@ -97,8 +99,9 @@ class EditTrip extends Component {
 							<label>Check Out Date</label><br/>
 							<input type="text" name="checkOutDate" value={this.state.checkOutDate} onChange={this.handleInput} /> <br />
 
-							<button onClick={this.handleSubmit}> Edit Trip </button>
+							<button onClick={this.handleSubmit} className= "button button-alert"> Edit Trip </button>
 						</form>
+						</Card>
 					</div>
 				</div>
 			</div>

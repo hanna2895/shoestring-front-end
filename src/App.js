@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import logo from './logo.png'
 import './App.css';
 import LoginRegister from './LoginRegister'
 import UserSidebar from './UserSidebar'
 import AllTripsContainer from './AllTripsContainer';
 import Navbar from './Navbar'
 import UserEditModal from './UserEditModal'
+
+
 
 class App extends Component {
   constructor(){
@@ -265,12 +268,13 @@ class App extends Component {
   render(){
     return (
       <div className="App">
+
         {this.state.loggedIn ?
 
           <div className="container">
             <div className="row">
               <div className="twelve columns">
-                <h1 className="header">Shoestring!</h1>
+                <img id="logo" src={logo} alt={"logo"}/>
               </div>
             </div>
 
@@ -297,16 +301,18 @@ class App extends Component {
 
 
             <div className="row">
-              <div className="four columns">
+              <div className="three columns">
                 <UserSidebar username={this.state.username} name={this.state.name} photo={this.state.photo} openModal={this.openModal}/>
                 <UserEditModal openModal={this.state.openModal} closeModal={this.closeModal} user_id={this.state.user_id} user_name={this.state.name} username={this.state.username} photo={this.state.photo} editUser={this.editUser} userEditError={this.state.userEditError}/>
               </div>
 
+              <div className="one column"></div>
+
               <div className="eight columns">
               <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} editedTripId={this.state.editedTripId} tripToEdit={this.state.tripToEdit} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} hotelToShow={this.state.hotelToShow} flightToShow={this.state.flightToShow} getTheTripToEdit={this.getTheTripToEdit} closeShowTrip={this.closeShowTrip}/>
-
               </div>
-            </div>
+
+          </div>
 
           </div>
 

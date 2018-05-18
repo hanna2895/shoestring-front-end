@@ -18,7 +18,7 @@ class Navbar extends Component {
           <div className="row">
 
             <div className="four columns">
-              <button className="button" onClick={this.props.navigateToIndex}>Home</button>
+              <button className="button button-primary" onClick={this.props.navigateToIndex}>Home</button>
             </div>
 
 
@@ -28,7 +28,7 @@ class Navbar extends Component {
 
 
             <div className="four columns">
-              <button className="button" onClick={this.props.logout}>Logout</button>
+              <button className="button button" onClick={this.props.logout}>Logout</button>
             </div>
 
           </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Container, Card, Button, CardTitle, CardText, Row } from 'reactstrap';
 import "../style.css";
 
@@ -11,14 +10,15 @@ const TripIndex = (props) => {
 			<Row key={trip.id}>
 				<Card body key={trip.id} className="trip">
 					<div id={trip.id}>
-						<CardTitle>{trip.title}</CardTitle> <br/>
-						<CardText>Trip Budget: {trip.budget}</CardText> <br/>
-						<CardText>Amount Saved: {trip.saved} </CardText><br />
+						<h1>Trip Title:</h1>
+						<h1>{trip.title}</h1> <br/>
+						<h3>Trip Budget:<br/>
+						 ${trip.budget}</h3> <br/>
+						<h3>Amount I've Saved:<br />
+						${trip.saved} </h3><br />
 						<button className="button button-primary" onClick={props.openShowTrip}>More Details</button><br />
 						<button className="button button-primary" onClick={props.renderEditTripForm}>Edit Trip </button><br /><br />
-						<button className="button button-primary" onClick={props.deleteTrip}> Delete Trip </button><br />
-
-
+						<button className="button button" onClick={props.deleteTrip}> Delete Trip </button><br />
 					</div>
 					<div>
 						<p>Data viz will go here</p>
@@ -30,7 +30,6 @@ const TripIndex = (props) => {
 	})
 	return (
 		<div className="trip-cards">
-			<h1>My Trips</h1>
 			{tripList}
 		</div>
 	)

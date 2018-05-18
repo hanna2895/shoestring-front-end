@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-// import { Container, Row, Col, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import './style.css'
 
 class Navbar extends Component {
   constructor(){
     super();
     this.state = {
-      // showNewTrip: false,
       logout: false
     }
   }

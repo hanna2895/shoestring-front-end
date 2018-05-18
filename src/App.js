@@ -29,7 +29,8 @@ class App extends Component {
       tripShow: false,
       tripToShow: [],
       flightToShow: [],
-      hotelToShow: []
+      hotelToShow: [],
+      loader: false
     }
   }
 
@@ -146,7 +147,6 @@ class App extends Component {
   }
 
   closeModal = (e) => {
-    // console.log("button being clicked and function called");
     this.setState({
       openModal: false,
     })
@@ -164,7 +164,6 @@ class App extends Component {
       })
     });
     const response = await user.json()
-    // console.log(response.user)
     if(response.success){
       this.setState({
         name: name,
@@ -180,7 +179,6 @@ class App extends Component {
   }
 
   renderAddNewTripForm = () => {
-    // console.log('this add new trip function is being called on the button');
     this.setState({
       showNewTrip: true,
       showTripsIndex: false,
@@ -189,15 +187,12 @@ class App extends Component {
   }
 
   openShowTrip = async (e) => {
-    // console.log("this is openShowTrip button")
     const id = parseInt(e.target.parentNode.id)
-    console.log(id, 'this is the id in openshowtrip');
-    console.log(e.currentTarget.parentNode);
+
     const trip = await fetch('http://localhost:9292/trips/' + id, {
       credentials: 'include'
     })
     const response = await trip.json()
-    console.log(response, 'this is response from openshowtrip');
     this.setState({
 
       showNewTrip: false,
@@ -230,8 +225,7 @@ class App extends Component {
 
   getTheTripToEdit = async () => {
     const id = this.state.editedTripId;
-    console.log(id, 'this is id in getthetriptoedit');
-    console.log(this.editedTripId);
+
     const tripJson = await fetch('http://localhost:9292/trips/' + id, {
       credentials: 'include'
     });
@@ -248,14 +242,11 @@ class App extends Component {
 
   renderEditTripForm = async (e) => {
     const id = e.currentTarget.parentNode.id;
-    console.log(id, 'this is id in renderEditTripForm');
-    console.log(e.currentTarget.previousSibling.prevoiusSibling);
 
     const tripJson = await fetch('http://localhost:9292/trips/' + id, {
       credentials: 'include'
     });
     const trip = await tripJson.json();
-    console.log(id, 'this is id in render edit trip form');
     this.setState({
       showEditTrip: true,
       showNewTrip: false,
@@ -263,6 +254,26 @@ class App extends Component {
       editedTripId: id,
       tripToEdit: trip
     });
+  }
+
+  loaderOn = () => {
+    this.setState({
+      loader: true,
+      showTripsIndex:false,
+      showNewTrip: false,
+      showEditTrip: false,
+      tripShow: false
+    })
+  }
+
+  loaderOff = () => {
+    this.setState({
+      loader: false,
+      showTripsIndex:true,
+      showNewTrip: false,
+      showEditTrip: false,
+      tripShow: false
+    })
   }
 
   render(){
@@ -309,7 +320,8 @@ class App extends Component {
               <div className="one column"></div>
 
               <div className="eight columns">
-              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} editedTripId={this.state.editedTripId} tripToEdit={this.state.tripToEdit} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} hotelToShow={this.state.hotelToShow} flightToShow={this.state.flightToShow} getTheTripToEdit={this.getTheTripToEdit} closeShowTrip={this.closeShowTrip}/>
+              <AllTripsContainer showNewTrip={this.state.showNewTrip} showEditTrip={this.state.showEditTrip} editedTripId={this.state.editedTripId} tripToEdit={this.state.tripToEdit} showTripsIndex={this.state.showTripsIndex} renderEditTripForm={this.renderEditTripForm} openShowTrip={this.openShowTrip} tripToShow={this.state.tripToShow} hotelToShow={this.state.hotelToShow} flightToShow={this.state.flightToShow} getTheTripToEdit={this.getTheTripToEdit} closeShowTrip={this.closeShowTrip} loader={this.state.loader} loaderOn={this.loaderOn} loaderOff={this.loaderOff}/>
+
               </div>
 
           </div>

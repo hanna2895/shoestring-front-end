@@ -3,7 +3,10 @@ import { Container, Card, Button, CardTitle, CardText, Row } from 'reactstrap';
 
 class TripShow extends Component{
 	render(){
-		console.log(this.props);
+		const departureDate = this.props.flightToShow.departs_at.substring(0,10)
+		const returnDate = this.props.flightToShow.arrives_at.substring(0,10)
+		console.log(departureDate, returnDate);
+
 		return(
 			<div>
 				<Card>

@@ -45,8 +45,9 @@ class AddNewTrip extends Component {
 					<div className="row">
 						<div className="eight columns">
 							<Card>
-							<h2>Create a New Trip</h2><br />
+							<h1>Create a New Trip</h1><br />
 							<form onSubmit={this.handleSubmit}>
+							<h2>The 411</h2><br />
 								<label> Trip Title </label><br />
 								<input type="text" name="title" value={this.state.title} onChange={this.handleInput} /> <br />
 								<Tooltips />
@@ -62,6 +63,7 @@ class AddNewTrip extends Component {
 								<label>Amount Saved</label><br />
 								$<input type="text" name="amountSaved" value={this.state.amountSaved} onChange={this.handleInput} /><br />
 
+								<h2>Up In The Air</h2><br />
 								<label>Departure Date</label><br />
 								<input type="text" name="departureDate" value={this.state.departureDate} onChange={this.handleInput} /><br />
 
@@ -70,7 +72,8 @@ class AddNewTrip extends Component {
 
 								<label>Number of Passengers</label><br />
 								<input type="text" name="numOfPassengers" value={this.state.numOfPassengers} onChange={this.handleInput} /><br />
-
+								
+								<h2>Sweet Dreams</h2><br />
 								<Tooltips />
 
 								<label>Hotel Location</label><br />

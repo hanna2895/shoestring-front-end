@@ -39,7 +39,6 @@ class AllTripsContainer extends Component {
 	createTrip = async (title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate) => {
 
 		this.props.loaderOn()
-
 		const trips = await fetch('http://localhost:9292/trips', {
 			method: "POST",
 			credentials: 'include',

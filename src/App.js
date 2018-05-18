@@ -35,7 +35,7 @@ class App extends Component {
   }
 
   login = async (username, password) => {
-    const userLogin = await fetch('http://localhost:9292/user/login', {
+    const userLogin = await fetch('https://fast-thicket-16480.herokuapp.com/user/login', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify({
@@ -70,7 +70,7 @@ class App extends Component {
   }
 
   register = async (name, username, password, photo) => {
-    const userRegister = await fetch('http://localhost:9292/user/register', {
+    const userRegister = await fetch('https://fast-thicket-16480.herokuapp.com/user/register', {
       method: 'POST',
       credentials: 'include',
       body: JSON.stringify({
@@ -107,7 +107,7 @@ class App extends Component {
   }
 
   logout = async (username, password) => {
-    const userLogout = await fetch('http://localhost:9292/user/logout', {
+    const userLogout = await fetch('https://fast-thicket-16480.herokuapp.com/user/logout', {
         // method: 'GET'
     });
     // console.log(userLogout, "logout button being clicked");
@@ -126,7 +126,7 @@ class App extends Component {
   showUserSidebar = async () => {
     // console.log('show user sidebar');
 
-    const userJson = await fetch('http://localhost:9292/user', {
+    const userJson = await fetch('https://fast-thicket-16480.herokuapp.com/user', {
       credentials: 'include'
     });
 
@@ -136,7 +136,7 @@ class App extends Component {
   };
 
   openModal = async (e) => {
-    const userToEdit = await fetch('http://localhost:9292/user', {
+    const userToEdit = await fetch('https://fast-thicket-16480.herokuapp.com/user', {
       credentials: 'include'
     });
     const foundUser = await userToEdit.json()
@@ -153,7 +153,7 @@ class App extends Component {
   }
 
   editUser = async (name, username, password, photo, id) => {
-    const user = await fetch('http://localhost:9292/user/' + id, {
+    const user = await fetch('https://fast-thicket-16480.herokuapp.com/user/' + id, {
       method: 'PUT',
       credentials: 'include',
       body: JSON.stringify({
@@ -189,7 +189,7 @@ class App extends Component {
   openShowTrip = async (e) => {
     const id = parseInt(e.target.parentNode.id)
 
-    const trip = await fetch('http://localhost:9292/trips/' + id, {
+    const trip = await fetch('https://fast-thicket-16480.herokuapp.com/trips/' + id, {
       credentials: 'include'
     })
     const response = await trip.json()
@@ -226,7 +226,7 @@ class App extends Component {
   getTheTripToEdit = async () => {
     const id = this.state.editedTripId;
 
-    const tripJson = await fetch('http://localhost:9292/trips/' + id, {
+    const tripJson = await fetch('https://fast-thicket-16480.herokuapp.com/trips/' + id, {
       credentials: 'include'
     });
 
@@ -243,7 +243,7 @@ class App extends Component {
   renderEditTripForm = async (e) => {
     const id = e.currentTarget.parentNode.id;
 
-    const tripJson = await fetch('http://localhost:9292/trips/' + id, {
+    const tripJson = await fetch('https://fast-thicket-16480.herokuapp.com/trips/' + id, {
       credentials: 'include'
     });
     const trip = await tripJson.json();

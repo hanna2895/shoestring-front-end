@@ -77,7 +77,7 @@ class AllTripsContainer extends Component {
 	editTrip = async(title, origin, destination, budget, amountSaved, departureDate, returnDate, numOfPassengers, locationCode, checkInDate, checkOutDate) => {
 		const id = this.props.editedTripId;
 		this.props.loaderOn()
-		const trip = await fetch('http://localhost:9292/trips/' + id, {
+		const trip = await fetch('https://fast-thicket-16480.herokuapp.com/trips/' + id, {
 			method: "PUT",
 			credentials: 'include',
 			body: JSON.stringify({
@@ -114,8 +114,8 @@ class AllTripsContainer extends Component {
 
 	deleteTrip = async (e) => {
 		e.preventDefault();
-		const id = parseInt(e.target.parentNode.id) 
-		const trip = await fetch('http://localhost:9292/trips/' + id, {
+		const id = parseInt(e.target.parentNode.id)
+		const trip = await fetch('https://fast-thicket-16480.herokuapp.com/trips/' + id, {
 			method: "DELETE",
 			credentials: 'include'
 		})
@@ -126,7 +126,7 @@ class AllTripsContainer extends Component {
 			})
 		})
 	}
-	
+
 	render() {
 		return(
 			<div className="container">

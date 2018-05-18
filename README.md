@@ -1,14 +1,14 @@
-#Shoestring: Save. And see the world.
+# Shoestring: Save. And see the world.
 
-####Welcome to Shoestring, a travel app that helps you visualize your travel budget and find the lowest possible airfare and hotel room for your intended destination.
+### Welcome to Shoestring, a travel app that helps you visualize your travel budget and find the lowest possible airfare and hotel room for your intended destination.
 
-###User Stories
+### User Stories
 
-####As a savvy traveller, you aren't someone who cares so much about five star hotels or flying first class; you care more about the spirit of a place and spending your hard earned monies on the best tacos in Mexico City or kayaking around Halong Bay.   
+#### As a savvy traveller, you aren't someone who cares so much about five star hotels or flying first class; you care more about the spirit of a place and spending your hard earned monies on the best tacos in Mexico City or kayaking around Halong Bay.   
 
-####Shoestring wants to help you organize flight/hotel information rather than actually booking the trip for you. We help you visualize your time off, your budget and your greatest trip ideas. Leave the booking to Kayak or Skyscanner <3
+#### Shoestring wants to help you organize flight/hotel information rather than actually booking the trip for you. We help you visualize your time off, your budget and your greatest trip ideas. Leave the booking to Kayak or Skyscanner <3
 
-######Let's get started!
+###### Let's get started!
 
 Once on the landing page, please register for an account. Remember to include a photo!
 
@@ -41,7 +41,7 @@ This trip container will render on a card displaying the main information header
 You can click on trip card to display expanded information regarding hotel and flight itineraries. You also have the option to edit and delete the trip (and user!).
 
 
-##MVP
+## MVP
 Create a Single Page Application with two or more data structures using React, Sinatra, ActiveRecord and PostgreSQL.
 
 Our team of three created a travel app that renders information from two external API calls as well as our own API.
@@ -51,7 +51,7 @@ We utilized the Amadeus Travel sandbox API which included both an low fare finde
 The ability to Create, Update, Read and Destroy both User and Trip models brings this Single Page Application to full CRUD capacity.
 
 
-##Wireframes
+## Wireframes
 Landing/Splashpage
 ![landing_page](wireframes_project3/landing_page.png)
 
@@ -64,6 +64,6 @@ Create New Trip Form
 Edit Trip Form
 ![edit trip form](wireframes_project3/edit_trip_form.png)
 
-##Forthcoming
+## Forthcoming
 -Calendar for date selection
-- 
+-

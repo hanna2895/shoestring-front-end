@@ -1,10 +1,12 @@
 import React from 'react';
+import DataComponent from './DataComponent'
 
 import { Container, Card, Button, CardTitle, CardText, Row } from 'reactstrap';
 import "../style.css";
 
 const TripIndex = (props) => {
-	const trips = props.trips;
+	const trips = props.trips
+	console.log(trips, "this is trips");
 	const tripList = trips.map((trip, i) => {
 		return (
 
@@ -12,7 +14,7 @@ const TripIndex = (props) => {
 				<Card body key={trip.id} className="trip">
 					<div id={trip.id}>
 						<CardTitle>{trip.title}</CardTitle> <br/>
-						<CardText>Trip Budget: {trip.budget}</CardText> <br/>
+						<CardText>Total Cost: {trip.cost}</CardText> <br/>
 						<CardText>Amount Saved: {trip.saved} </CardText><br />
 						<button className="button button-primary" onClick={props.openShowTrip}>More Details</button><br />
 						<button className="button button-primary" onClick={props.renderEditTripForm}>Edit Trip </button><br /><br />
@@ -21,7 +23,7 @@ const TripIndex = (props) => {
 
 					</div>
 					<div>
-						<p>Data viz will go here</p>
+						<DataComponent cost={trip.cost} saved={trip.saved}/>
 					</div>
 				</Card>
 			</Row>

@@ -28,9 +28,9 @@ class TripShow extends Component{
 					<h2>Flight Destination:</h2>
 						<h3>{this.props.flightToShow.destination}</h3>
 					<h2>Departure Date:</h2>
-						<h3>{this.props.flightToShow.departs_at}</h3>
+						<h3>{departureDate}</h3>
 					<h2>Arrival Date:</h2>
-						<h3>{this.props.flightToShow.arrives_at}</h3>
+						<h3>{returnDate}</h3>
 					<h2>Airline:</h2>
 						<h3>{this.props.flightToShow.airline}</h3>
 					<h2>Flight Number:</h2>

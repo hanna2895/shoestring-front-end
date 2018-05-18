@@ -15,7 +15,7 @@ const UserSidebar = (props) => {
               <CardImg id="userPhoto" src={props.photo} alt="photo" />
               <CardBody>
               <h1>{props.name}</h1>
-              <h3>{props.name}</h3>
+              <h3>{props.username}</h3>
               <button className= "button button" onClick={props.openModal}>Edit User</button><br /><br />
             </CardBody>
           </Card>

@@ -153,6 +153,7 @@ class App extends Component {
   }
 
   editUser = async (name, username, password, photo, id) => {
+    console.log("edit user is being hit");
     const user = await fetch('https://salty-island-34690.herokuapp.com/user/' + id, {
       method: 'PUT',
       credentials: 'include',

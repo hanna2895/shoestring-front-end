@@ -21,6 +21,7 @@ class UserEditModal extends Component{
 	}
 	handleSubmit = (e) => {
 		e.preventDefault()
+		console.log(this.state, "this is state in the user edit modal when handle submit is called");
 		this.props.editUser(this.state.nameVal, this.state.usernameVal, this.state.passwordVal, this.state.photoVal, this.props.user_id)
 		this.setState({
 			nameVal: '',

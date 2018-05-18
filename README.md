@@ -63,3 +63,7 @@ Create New Trip Form
 
 Edit Trip Form
 ![edit trip form](wireframes_project3/edit_trip_form.png)
+
+##Forthcoming
+-Calendar for date selection
+- 

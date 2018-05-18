@@ -47,6 +47,7 @@ class AddNewTrip extends Component {
 							<Card>
 							<h1>Create a New Trip</h1><br />
 							<form onSubmit={this.handleSubmit}>
+
 							<h2>The 411</h2><br />
 								<label> Trip Title </label><br />
 								<input type="text" name="title" value={this.state.title} onChange={this.handleInput} /> <br />
@@ -72,7 +73,7 @@ class AddNewTrip extends Component {
 
 								<label>Number of Passengers</label><br />
 								<input type="text" name="numOfPassengers" value={this.state.numOfPassengers} onChange={this.handleInput} /><br />
-								
+
 								<h2>Sweet Dreams</h2><br />
 								<Tooltips />
 

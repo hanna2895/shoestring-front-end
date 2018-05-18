@@ -2,11 +2,9 @@ import React from 'react';
 import ProgressLabel from 'react-progress-label'
 
 const DataComponent = (props) => {
-	console.log(props, "this is props in data component");
 	const cost = parseInt(props.cost)
 	const saved = parseInt(props.saved)
 	const progress = Math.round(saved/cost * 100, 2);
-	console.log(progress);
 	const textStyle = {
     	fill: 'black',
    	 	textAnchor: 'middle'

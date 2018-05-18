@@ -37,23 +37,23 @@ class UserEditModal extends Component{
 		return(
 			<Container>
 				<Modal isOpen={this.props.openModal} className={this.props.className}>
-          	<ModalHeader toggle={this.toggle}>
-							<h2>Edit User</h2>
-							<Button color="secondary" onClick={this.props.closeModal}>Cancel</Button>
-						</ModalHeader>
+          			<ModalHeader toggle={this.toggle}>
+						<h2>Edit User</h2>
+						<Button color="secondary" onClick={this.props.closeModal}>Cancel</Button>
+					</ModalHeader>
 
-          		<ModalBody>
-            		<Form onSubmit={this.handleSubmit}>
-									<Input type="text" placeholder="name" onChange={(e) => this.setState({ nameVal: e.target.value })}/>
-        					<Input type="text" placeholder="username" onChange={(e) => this.setState({ usernameVal: e.target.value })}/>
-        					<Input type="text" placeholder="photo" onChange={(e) => this.setState({ photoVal: e.target.value })}/>
-  								<Input type="password" placeholder="password" onChange={(e) => this.setState({ passwordVal: e.target.value })}/>
-      					<Button color="primary">Submit</Button>
-							</Form>
-							{this.props.userEditError != '' ? <p>{this.props.userEditError}</p> : null}
+	          		<ModalBody>
+	            		<Form onSubmit={this.handleSubmit}>
+							<Input type="text" placeholder="name" onChange={(e) => this.setState({ nameVal: e.target.value })}/>
+	    					<Input type="text" placeholder="username" onChange={(e) => this.setState({ usernameVal: e.target.value })}/>
+	    					<Input type="text" placeholder="photo" onChange={(e) => this.setState({ photoVal: e.target.value })}/>
+							<Input type="password" placeholder="password" onChange={(e) => this.setState({ passwordVal: e.target.value })}/>
+	      					<Button color="primary">Submit</Button>
+						</Form>
+						{this.props.userEditError != '' ? <p>{this.props.userEditError}</p> : null}
 
-        	</ModalBody>
-    		</Modal>
+	        		</ModalBody>
+    			</Modal>
 			</Container>
 	)}
 }

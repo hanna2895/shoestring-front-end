@@ -114,7 +114,7 @@ class AllTripsContainer extends Component {
 
 	deleteTrip = async (e) => {
 		e.preventDefault();
-		const id = parseInt(e.target.parentNode.id) 
+		const id = parseInt(e.target.parentNode.id)
 		const trip = await fetch('https://salty-island-34690.herokuapp.com/trips/' + id, {
 			method: "DELETE",
 			credentials: 'include'
@@ -126,7 +126,7 @@ class AllTripsContainer extends Component {
 			})
 		})
 	}
-	
+
 	render() {
 		return(
 			<div className="container">
